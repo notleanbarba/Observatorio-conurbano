@@ -109,7 +109,11 @@
         "edad_mediana": 32.5,
         "superficie_km2_indec": 129.3,
         "densidad_indec": 4523.0
-      }
+      },
+      "intendente": "Juan José Fabiani",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Fuerza Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "avellaneda",
@@ -208,7 +212,11 @@
         "edad_mediana": 36.3,
         "superficie_km2_indec": 56.2,
         "densidad_indec": 6540.1
-      }
+      },
+      "intendente": "Jorge Ferraresi",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Fuerza Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "berazategui",
@@ -308,7 +316,11 @@
         "edad_mediana": 33.0,
         "superficie_km2_indec": 220.2,
         "densidad_indec": 1629.0
-      }
+      },
+      "intendente": "Carlos Balor",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Fuerza Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "esteban_echeverria",
@@ -407,7 +419,11 @@
         "edad_mediana": 31.3,
         "superficie_km2_indec": 121.3,
         "densidad_indec": 2790.4
-      }
+      },
+      "intendente": "Fernando Gray",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "ezeiza",
@@ -507,7 +523,11 @@
         "edad_mediana": 30.1,
         "superficie_km2_indec": 238.2,
         "densidad_indec": 846.0
-      }
+      },
+      "intendente": "Gastón Granados",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "florencio_varela",
@@ -607,7 +627,11 @@
         "edad_mediana": 29.2,
         "superficie_km2_indec": 189.5,
         "densidad_indec": 2619.7
-      }
+      },
+      "intendente": "Andrés Watson",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "hurlingham",
@@ -706,7 +730,11 @@
         "edad_mediana": 35.9,
         "superficie_km2_indec": 35.8,
         "densidad_indec": 5185.5
-      }
+      },
+      "intendente": "Damián Selci",
+      "intendente_partido": "La Cámpora",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Se salva por ahora, compañero"
     },
     {
       "id": "ituzaingo",
@@ -806,7 +834,11 @@
         "edad_mediana": 37.5,
         "superficie_km2_indec": 38.1,
         "densidad_indec": 4730.5
-      }
+      },
+      "intendente": "Pablo Descalzo",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "jose_c_paz",
@@ -906,7 +938,11 @@
         "edad_mediana": 29.8,
         "superficie_km2_indec": 50.2,
         "densidad_indec": 6513.8
-      }
+      },
+      "intendente": "Lorena Espina",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Fuerza Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "la_matanza",
@@ -1006,7 +1042,11 @@
         "edad_mediana": 31.5,
         "superficie_km2_indec": 327.4,
         "densidad_indec": 5623.8
-      }
+      },
+      "intendente": "Fernando Espinoza",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "lanus",
@@ -1102,7 +1142,11 @@
         "edad_mediana": 37.3,
         "superficie_km2_indec": 50.2,
         "densidad_indec": 9188.6
-      }
+      },
+      "intendente": "Julián Álvarez",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Fuerza Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "lomas_de_zamora",
@@ -1201,7 +1245,11 @@
         "edad_mediana": 33.8,
         "superficie_km2_indec": 88.7,
         "densidad_indec": 7784.4
-      }
+      },
+      "intendente": "Federico Otermín",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "malvinas_argentinas",
@@ -1301,7 +1349,11 @@
         "edad_mediana": 32.3,
         "superficie_km2_indec": 62.9,
         "densidad_indec": 5575.1
-      }
+      },
+      "intendente": "Leonardo Nardini",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "merlo",
@@ -1400,7 +1452,11 @@
         "edad_mediana": 31.2,
         "superficie_km2_indec": 174.1,
         "densidad_indec": 3345.7
-      }
+      },
+      "intendente": "Gustavo Menéndez",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "moreno",
@@ -1567,7 +1623,11 @@
         "edad_mediana": 29.8,
         "superficie_km2_indec": 186.2,
         "densidad_indec": 3096.8
-      }
+      },
+      "intendente": "Mariel Fernández",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "moron",
@@ -1703,7 +1763,11 @@
         "edad_mediana": 39.1,
         "superficie_km2_indec": 55.1,
         "densidad_indec": 6010.6
-      }
+      },
+      "intendente": "Lucas Ghi",
+      "intendente_partido": "Nuevo Encuentro",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Se salva por ahora, compañero"
     },
     {
       "id": "quilmes",
@@ -1803,7 +1867,11 @@
         "edad_mediana": 33.6,
         "superficie_km2_indec": 91.6,
         "densidad_indec": 6914.7
-      }
+      },
+      "intendente": "Eva Mieri (int.)",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Fuerza Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "san_fernando",
@@ -1903,7 +1971,11 @@
         "edad_mediana": 34.8,
         "superficie_km2_indec": 992.8,
         "densidad_indec": 172.9
-      }
+      },
+      "intendente": "Juan Andreotti",
+      "intendente_partido": "Frente Renovador",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario con aviso previo"
     },
     {
       "id": "san_isidro",
@@ -1999,7 +2071,11 @@
         "edad_mediana": 40.0,
         "superficie_km2_indec": 52.4,
         "densidad_indec": 5673.3
-      }
+      },
+      "intendente": "Ramón Lanús",
+      "intendente_partido": "ConVocación por San Isidro",
+      "intendente_alianza": "Juntos por el Cambio",
+      "veredicto_revolutionario": "Despojo revolucionario inmediato"
     },
     {
       "id": "sanmartin",
@@ -2108,7 +2184,11 @@
         "edad_mediana": 36.1,
         "superficie_km2_indec": 56.5,
         "densidad_indec": 7973.8
-      }
+      },
+      "intendente": "Fernando Moreira",
+      "intendente_partido": "PJ",
+      "intendente_alianza": "Unión por la Patria",
+      "veredicto_revolutionario": "Despojo revolucionario pendiente"
     },
     {
       "id": "san_miguel",
@@ -2203,7 +2283,11 @@
         "edad_mediana": 32.6,
         "superficie_km2_indec": 82.8,
         "densidad_indec": 3971.4
-      }
+      },
+      "intendente": "Jaime Méndez",
+      "intendente_partido": "ERF",
+      "intendente_alianza": "Juntos por el Cambio",
+      "veredicto_revolutionario": "Despojo revolucionario inmediato"
     },
     {
       "id": "tigre",
@@ -2303,7 +2387,11 @@
         "edad_mediana": 33.2,
         "superficie_km2_indec": 393.9,
         "densidad_indec": 1134.7
-      }
+      },
+      "intendente": "Julio Zamora",
+      "intendente_partido": "SOMOS",
+      "intendente_alianza": "UCR",
+      "veredicto_revolutionario": "Despojo revolucionario diferido"
     },
     {
       "id": "tresdefebrero",
@@ -2459,7 +2547,11 @@
         "edad_mediana": 37.7,
         "superficie_km2_indec": 45.4,
         "densidad_indec": 8021.5
-      }
+      },
+      "intendente": "Rodrigo Aybar",
+      "intendente_partido": "LLA",
+      "intendente_alianza": "La Libertad Avanza",
+      "veredicto_revolutionario": "Despojo revolucionario de extrema urgencia"
     },
     {
       "id": "vicente_lopez",
@@ -2555,7 +2647,11 @@
         "edad_mediana": 41.9,
         "superficie_km2_indec": 34.5,
         "densidad_indec": 8182.0
-      }
+      },
+      "intendente": "Soledad Martínez",
+      "intendente_partido": "PRO",
+      "intendente_alianza": "Juntos por el Cambio",
+      "veredicto_revolutionario": "Despojo revolucionario inmediato"
     }
   ]
 }
