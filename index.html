@@ -759,6 +759,182 @@ footer{
   .nav-inner{padding:0 1rem}
 }
 
+/* FICHA SOVIÉTICA DEL INTENDENTE */
+.soviet-card{
+  background:#1A1A1A;
+  border:3px solid var(--oro);
+  margin-bottom:1.25rem;
+  box-shadow:6px 6px 0 var(--c1);
+  position:relative;
+  overflow:hidden;
+}
+.soviet-card::before{
+  content:'';
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(135deg,transparent 0 20px,rgba(227,6,19,.06) 20px 22px,transparent 22px 40px);
+  pointer-events:none;
+}
+.soviet-header{
+  background:var(--c1);
+  background-image:linear-gradient(90deg,var(--c1d) 0%,var(--c1) 40%,var(--c1) 60%,var(--c1d) 100%);
+  padding:.6rem 1rem;
+  display:flex;align-items:center;gap:.5rem;
+  border-bottom:3px solid var(--oro);
+}
+.soviet-header-title{
+  font-family:'Black Ops One','Anton',sans-serif;
+  font-size:13px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--oro);
+}
+.soviet-header-star{
+  font-size:18px;
+  color:var(--oro);
+}
+.soviet-body{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:0;
+  position:relative;
+  z-index:2;
+}
+.soviet-photo{
+  background:var(--c1d);
+  border-right:3px solid var(--oro);
+  padding:1.25rem 1rem;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:140px;
+}
+.soviet-avatar{
+  width:90px;height:110px;
+  background:var(--ink);
+  border:3px solid var(--oro);
+  display:flex;align-items:center;justify-content:center;
+  font-size:52px;
+  line-height:1;
+  color:var(--oro);
+  font-family:'Black Ops One',sans-serif;
+  position:relative;
+  overflow:hidden;
+}
+.soviet-avatar::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;height:30%;
+  background:var(--c1);
+}
+.soviet-stamp{
+  margin-top:.6rem;
+  font-family:'Special Elite',monospace;
+  font-size:9px;
+  color:var(--oro);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  text-align:center;
+  border:1.5px solid var(--oro);
+  padding:2px 6px;
+  transform:rotate(-3deg);
+}
+.soviet-info{
+  padding:1rem 1.25rem;
+  background:var(--ink);
+}
+.soviet-name{
+  font-family:'Anton','Impact',sans-serif;
+  font-size:1.5rem;
+  color:var(--oro);
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  line-height:1.1;
+  margin-bottom:.15rem;
+}
+.soviet-role{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:13px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:.6rem;
+  padding-bottom:.5rem;
+  border-bottom:2px dashed rgba(255,209,0,.3);
+}
+.soviet-fields{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.35rem .75rem;
+}
+.soviet-field{
+  display:flex;flex-direction:column;
+}
+.soviet-field-label{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--c1l);
+  line-height:1.2;
+}
+.soviet-field-value{
+  font-family:'Oswald',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  color:#fff;
+  line-height:1.3;
+}
+.soviet-veredicto{
+  margin-top:.7rem;
+  padding:.6rem .85rem;
+  border:3px solid;
+  font-family:'Black Ops One','Anton',sans-serif;
+  font-size:14px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  text-align:center;
+  line-height:1.3;
+  position:relative;
+}
+.soviet-veredicto::before{
+  content:'';
+  position:absolute;top:4px;left:4px;right:4px;bottom:4px;
+  border:1.5px dashed;
+  opacity:.4;
+  pointer-events:none;
+}
+.soviet-veredicto.urgente{background:#8B0000;border-color:#FF1744;color:#FFD100}
+.soviet-veredicto.urgente::before{border-color:#FF1744}
+.soviet-veredicto.inmediato{background:#DC2626;border-color:#FFD100;color:#FFD100}
+.soviet-veredicto.inmediato::before{border-color:#FFD100}
+.soviet-veredicto.pendiente{background:#92400E;border-color:#FFA000;color:#FFD100}
+.soviet-veredicto.pendiente::before{border-color:#FFA000}
+.soviet-veredicto.diferido{background:#1E40AF;border-color:#6CACE4;color:#E0F2FE}
+.soviet-veredicto.diferido::before{border-color:#6CACE4}
+.soviet-veredicto.salva{background:#065F46;border-color:#34D399;color:#A7F3D0}
+.soviet-veredicto.salva::before{border-color:#34D399}
+.soviet-veredicto.aviso{background:#7C2D12;border-color:#FFA000;color:#FED7AA}
+.soviet-veredicto.aviso::before{border-color:#FFA000}
+.soviet-footer{
+  background:var(--c1d);
+  border-top:2px solid var(--oro);
+  padding:.4rem 1rem;
+  display:flex;justify-content:space-between;align-items:center;
+  position:relative;
+  z-index:2;
+}
+.soviet-footer span{
+  font-family:'Special Elite',monospace;
+  font-size:10px;
+  color:var(--oro);
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+@media(max-width:768px){
+  .soviet-body{grid-template-columns:1fr}
+  .soviet-photo{flex-direction:row;gap:1rem;padding:.75rem 1rem;border-right:none;border-bottom:3px solid var(--oro)}
+  .soviet-avatar{width:70px;height:85px;font-size:40px}
+  .soviet-fields{grid-template-columns:1fr}
+}
+
 /* BUSCADOR */
 .search-wrap{position:relative;flex:1;min-width:200px}
 .search-input{
@@ -1519,7 +1695,45 @@ function openPanel(id){
         .map(([k,v])=>`<span style="display:inline-flex;align-items:center;gap:4px;font-size:10px;color:var(--ink2);margin-right:8px;margin-bottom:4px"><span style="width:8px;height:8px;border-radius:2px;background:${SECT_COLORS_TM[k]||'#888'};flex-shrink:0"></span>${SECT_LABELS_TM[k]||k} <strong style="color:var(--ink)">${v.pct.toFixed(1)}%</strong></span>`).join('')
     : '';
 
+  // FICHA SOVIÉTICA DEL INTENDENTE
+  const veredicto = m.veredicto_revolutionario || '';
+  const vrClass = veredicto.includes('extrema urgencia')?'urgente':
+                  veredicto.includes('inmediato')?'inmediato':
+                  veredicto.includes('diferido')?'diferido':
+                  veredicto.includes('aviso previo')?'aviso':
+                  veredicto.includes('salva')?'salva':'pendiente';
+  const vrIcon = vrClass==='urgente'?'☠':vrClass==='inmediato'?'⚡':vrClass==='diferido'?'⏳':vrClass==='aviso'?'📢':vrClass==='salva'?'☭':'✊';
+  const initials = (m.intendente||'? ').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+
   document.getElementById('p-body').innerHTML=`
+    <div class="soviet-card">
+      <div class="soviet-header">
+        <span class="soviet-header-star">★</span>
+        <span class="soviet-header-title">FICHA DE PERSONAL — COMPAÑERO INTENDENTE</span>
+        <span class="soviet-header-star">★</span>
+      </div>
+      <div class="soviet-body">
+        <div class="soviet-photo">
+          <div class="soviet-avatar">${initials}</div>
+          <div class="soviet-stamp">${m.dato_calidad==='real'?'★ REGISTRADO':'⏳ PENDIENTE'}</div>
+        </div>
+        <div class="soviet-info">
+          <div class="soviet-name">${m.intendente||'Desconocido'}</div>
+          <div class="soviet-role">Intendente de ${m.nombre} · ${ZONA[m.zona]}</div>
+          <div class="soviet-fields">
+            <div class="soviet-field"><span class="soviet-field-label">Partido político</span><span class="soviet-field-value">${m.intendente_partido||'—'}</span></div>
+            <div class="soviet-field"><span class="soviet-field-label">Alianza electoral</span><span class="soviet-field-value">${m.intendente_alianza||'—'}</span></div>
+            <div class="soviet-field"><span class="soviet-field-label">Almas bajo su mando</span><span class="soviet-field-value">${fmtN(m.poblacion)}</span></div>
+            <div class="soviet-field"><span class="soviet-field-label">Guita que maneja</span><span class="soviet-field-value">${m.presupuesto_2025?'$'+Math.round(m.presupuesto_2025).toLocaleString('es-AR')+' MM':'—'}</span></div>
+          </div>
+          <div class="soviet-veredicto ${vrClass}">${vrIcon} ${veredicto.toUpperCase()}</div>
+        </div>
+      </div>
+      <div class="soviet-footer">
+        <span>EXPEDIENTE Nº ${m.id.replace(/_/g,'-').toUpperCase()}/2025</span>
+        <span>★ OBSERVATORIO POPULAR ★</span>
+      </div>
+    </div>
     <div class="pk-row">${kpis.map(([l,v,s])=>`<div class="pk"><div class="pk-l">${l}</div><div class="pk-v">${v}</div>${s?`<div class="pk-s">${s}</div>`:''}</div>`).join('')}</div>
     <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:1.25rem;margin-top:.25rem">
       <div>
