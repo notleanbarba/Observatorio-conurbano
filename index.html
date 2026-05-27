@@ -1054,6 +1054,10 @@ footer{
     ★ "LA PATRIA ES EL OTRO" — JUAN DOMINGO PERÓN ★ NI UN PASO ATRÁS, COMPAÑEROS ★
   </div>
   <div class="kpi-row" id="kpis"></div>
+  <div class="sh"><span class="sh-t">Tribunal Revolucionario — Veredicto por intendente</span><span class="sh-n">24 compañeros juzgados · ¿quién se salva y quién va al paredón?</span></div>
+  <div class="cgrid g1" style="margin-bottom:2rem">
+    <div class="cc"><div class="cc-t">☭ Condena del Tribunal Popular — intendentes por veredicto</div><div id="c-veredicto" style="min-height:320px;position:relative"></div></div>
+  </div>
   <div class="sh"><span class="sh-t">Cómo se reparte la guita del pueblo — 2025</span><span class="sh-n">% del total del conurbano combativo</span></div>
   <div class="cgrid g2" style="margin-bottom:2rem">
     <div class="cc v3"><div class="cc-t">Plata del pueblo — participación por compañero intendente</div><div id="donut-pres" style="min-height:300px"></div></div>
@@ -1323,7 +1327,7 @@ const GC = 'rgba(255,255,255,.06)', TC = '#5C5A55';
 fetch('datos.json').then(r=>r.json()).then(d=>{DATA=d.municipios;init();}).catch(e=>{console.error('Error cargando datos.json — verificá que el archivo esté en el repositorio:',e);DATA=[];init();});
 
 function init(){
-  renderHdr(); renderKPIs(); renderCharts(); renderTable(); renderTISH(); renderDemo();
+  renderHdr(); renderKPIs(); renderVeredicto(); renderCharts(); renderTable(); renderTISH(); renderDemo();
 }
 
 // ── HEADER ───────────────────────────────────────────────
@@ -1437,6 +1441,73 @@ function svgDonut(containerId, items, total, fmtVal) {
     </svg>
     <div style="flex:1;min-width:180px;max-height:280px;overflow-y:auto">${legend}</div>
   </div>`;
+}
+
+// ── VEREDICTO CHART ────────────────────────────────────────────
+const VEREDICTO_ORDER = [
+  {key:'extrema urgencia', label:'☠ Despojo de extrema urgencia', color:'#8B0000', bg:'#8B0000'},
+  {key:'inmediato',         label:'⚡ Despojo inmediato',           color:'#DC2626', bg:'#DC2626'},
+  {key:'pendiente',         label:'✊ Despojo pendiente',           color:'#92400E', bg:'#92400E'},
+  {key:'aviso previo',      label:'📢 Despojo con aviso previo',   color:'#B45309', bg:'#B45309'},
+  {key:'diferido',          label:'⏳ Despojo diferido',            color:'#1E40AF', bg:'#1E40AF'},
+  {key:'salva',             label:'☭ Se salva por ahora',          color:'#065F46', bg:'#065F46'},
+];
+const VEREDICTO_COLOR = v => {
+  if(v.includes('extrema urgencia'))  return '#8B0000';
+  if(v.includes('inmediato'))          return '#DC2626';
+  if(v.includes('diferido'))          return '#1E40AF';
+  if(v.includes('aviso previo'))      return '#B45309';
+  if(v.includes('salva'))             return '#065F46';
+  return '#92400E';
+};
+const VEREDICTO_ICON = v => {
+  if(v.includes('extrema urgencia'))  return '☠';
+  if(v.includes('inmediato'))          return '⚡';
+  if(v.includes('diferido'))          return '⏳';
+  if(v.includes('aviso previo'))      return '📢';
+  if(v.includes('salva'))             return '☭';
+  return '✊';
+};
+
+function renderVeredicto(){
+  const el = document.getElementById('c-veredicto');
+  if(!el) return;
+  const groups = {};
+  DATA.forEach(m=>{
+    const v = m.veredicto_revolutionario || 'Despojo revolucionario pendiente';
+    const cat = v.includes('extrema urgencia')?'extrema urgencia':
+                v.includes('inmediato')?'inmediato':
+                v.includes('diferido')?'diferido':
+                v.includes('aviso previo')?'aviso previo':
+                v.includes('salva')?'salva':'pendiente';
+    if(!groups[cat]) groups[cat]=[];
+    groups[cat].push(m);
+  });
+  const maxCount = Math.max(...VEREDICTO_ORDER.map(v=>(groups[v.key]||[]).length),1);
+  let html = '<div style="display:grid;grid-template-columns:1fr;gap:.65rem;padding:.5rem 0">';
+  VEREDICTO_ORDER.forEach(vo=>{
+    const munis = groups[vo.key]||[];
+    const count = munis.length;
+    if(!count) return;
+    const pct = (count/maxCount)*100;
+    const names = munis.map(m=>`<span style="padding:2px 8px;margin:2px;border:1px solid ${vo.color}44;border-radius:0;font-size:11px;background:${vo.color}18;color:#fff;font-family:'Oswald',sans-serif">${m.intendente||m.nombre}</span>`).join('');
+    html += `
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:.75rem;align-items:center">
+        <div style="text-align:right">
+          <div style="font-family:'Anton',sans-serif;font-size:${count>=5?'2.1rem':'1.8rem'};color:${vo.color};line-height:1">${count}</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;color:${vo.color};letter-spacing:.08em;text-transform:uppercase;margin-top:2px">${vo.label}</div>
+        </div>
+        <div>
+          <div style="background:${vo.bg}22;border:2px solid ${vo.color};height:28px;overflow:hidden;position:relative;margin-bottom:.35rem">
+            <div style="width:${pct}%;height:100%;background:repeating-linear-gradient(135deg,${vo.color}44 0 6px,${vo.color}88 6px 12px)"></div>
+            <div style="position:absolute;right:8px;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:12px;color:${vo.color};font-weight:700">${count} compañero${count>1?'s':''}</div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:0">${names}</div>
+        </div>
+      </div>`;
+  });
+  html += '</div>';
+  el.innerHTML = html;
 }
 
 function renderCharts(){
