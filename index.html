@@ -1503,6 +1503,9 @@ body.dark-mode body::before{color:rgba(227,6,19,.03)}
 /* MAP */
 .map-container{background:var(--card);border:4px solid var(--ink);box-shadow:var(--sh);overflow:hidden;position:relative}
 .map-container svg{display:block;width:100%;height:auto}
+.mapa-pol{transition:fill .25s,stroke .15s;stroke:#1A1A1A;stroke-width:1;stroke-linejoin:round}
+.mapa-pol:hover{stroke:var(--oro);stroke-width:3;filter:brightness(1.15)}
+.mapa-pol.selected{stroke:var(--c2);stroke-width:3;filter:brightness(1.2)}
 .muni-path{stroke:#1A1A1A;stroke-width:2;cursor:pointer;transition:fill .15s,stroke .15s,filter .15s}
 .muni-path:hover{stroke:var(--oro);stroke-width:3;filter:brightness(1.3) drop-shadow(0 0 6px rgba(255,209,0,.5))}
 .map-legend{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem;justify-content:center}
@@ -1688,14 +1691,14 @@ body.dark-mode body::before{color:rgba(227,6,19,.03)}
         <div style="font-family:'Anton',sans-serif;font-size:1.4rem;color:var(--oro);text-transform:uppercase;letter-spacing:.03em">★ Mano a Mano de Compañeros</div>
         <div style="font-family:'Special Elite',monospace;font-size:13px;color:#FFF;margin-top:4px" id="comp-view-title"></div>
       </div>
-      <button onclick="cerrarComparacion()" style="background:var(--c1);border:3px solid var(--oro);border-radius:0;color:var(--oro);font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:700;padding:6px 14px;cursor:pointer;letter-spacing:.06em">✕ CERRAR</button>
+      <div style="display:flex;gap:6px;flex-wrap:wrap"><button onclick="imprimirComparacion()" style="background:rgba(108,172,228,.15);border:1.5px solid rgba(108,172,228,.3);border-radius:0;color:#6CACE4;font-family:'Special Elite',monospace;font-size:10px;font-weight:700;padding:5px 12px;cursor:pointer;margin-right:6px">↓ IMPRIMIR</button><button onclick="cerrarComparacion()" style="background:var(--c1);border:3px solid var(--oro);border-radius:0;color:var(--oro);font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:700;padding:6px 14px;cursor:pointer;letter-spacing:.06em">✕ CERRAR</button></div>
     </div>
     <div style="padding:1.5rem;overflow-x:auto">
       <div id="comp-content"></div>
       <div id="comp-soviet-grid" class="comp-soviet-grid" style="margin-top:1.5rem"></div>
     </div>
   </div>
-  <div class="panel" id="panel"><div class="ph"><div><div class="ph-t" id="p-title"></div><div class="ph-s" id="p-sub"></div></div><button class="p-close" onclick="closePanel()">✕ CERRAR</button></div><div class="pb" id="p-body"></div></div>
+  <div class="panel" id="panel"><div class="ph"><div><div class="ph-t" id="p-title"></div><div class="ph-s" id="p-sub"></div></div><div style="display:flex;gap:6px;flex-wrap:wrap"><button onclick="exportarPanel(panelId)" style="background:rgba(108,172,228,.15);border:1.5px solid rgba(108,172,228,.3);border-radius:0;color:#6CACE4;font-family:'Special Elite',monospace;font-size:10px;font-weight:700;padding:6px 14px;cursor:pointer;margin-top:4px">↓ EXPORTAR PDF</button><button class="p-close" onclick="closePanel()">✕ CERRAR</button></div></div><div class="pb" id="p-body"></div></div>
   <div class="tw"><table><thead><tr id="thead-row"></tr></thead><tbody id="tbody"></tbody></table></div>
 </div>
 
@@ -1762,6 +1765,37 @@ body.dark-mode body::before{color:rgba(227,6,19,.03)}
           <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:700;color:var(--c1);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">★ Producción por cabeza</div>
           <div style="font-size:13px;color:var(--ink);line-height:1.5">Cuánto labura la economía local por cada alma. Mide el músculo productivo del pueblo.</div>
         </div>
+      </div>
+    </div>
+
+    <div style="background:var(--card);padding:1.5rem 1.75rem;box-shadow:var(--sh);margin-bottom:1.5rem;border:4px solid var(--ink);border-left:14px solid var(--c1);transform:rotate(.25deg)">
+      <div style="font-family:'Anton',sans-serif;font-size:24px;color:var(--c1);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.02em">☠ Índice de Vulnerabilidad Revolucionario</div>
+      <p style="font-size:14px;color:var(--ink);line-height:1.7;margin-bottom:.75rem">
+        El Índice de Vulnerabilidad mide del <strong>0 al 100</strong> cuánto sufre el pueblo en cada municipio. Cuanto más alto, más abandono oligárquico padece el compañero. Se construye con 4 dimensiones que revelan la verdad del conurbano profundo:
+      </p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem">
+        <div style="background:var(--bg2);padding:.85rem;border:2px solid var(--ink)">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:700;color:var(--c1);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Agua de red — 30%</div>
+          <div style="font-size:13px;color:var(--ink);line-height:1.5">Si el pueblo no tiene agua, no tiene dignidad. Porcentaje de hogares con conexión a red pública.</div>
+        </div>
+        <div style="background:var(--bg2);padding:.85rem;border:2px solid var(--ink)">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:700;color:var(--c1);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Red cloacal — 30%</div>
+          <div style="font-size:13px;color:var(--ink);line-height:1.5">Sin cloacas no hay pueblo digno. Porcentaje de hogares conectados a la red de desagües.</div>
+        </div>
+        <div style="background:var(--bg2);padding:.85rem;border:2px solid var(--ink)">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:700;color:var(--c1);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">★ PBG por cabeza — 25%</div>
+          <div style="font-size:13px;color:var(--ink);line-height:1.5">Cuánto produce la economía popular por cada compañero. Menos producción = más vulnerabilidad.</div>
+        </div>
+        <div style="background:var(--bg2);padding:.85rem;border:2px solid var(--ink)">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:700;color:var(--c1);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Crecimiento del pueblo — 15%</div>
+          <div style="font-size:13px;color:var(--ink);line-height:1.5">Variación intercensal 2010-2022. Más crecimiento sin infraestructura = más presión sobre los servicios.</div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);padding:.85rem;border:2px solid var(--ink);display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:13px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.05em">Cómo leerlo:</div>
+        <div style="display:flex;align-items:center;gap:.4rem"><div style="width:14px;height:14px;background:#065F46;border:2px solid #065F46"></div><span style="font-size:13px;color:var(--ink)">0–44 BAJO — El pueblo está relativamente bien</span></div>
+        <div style="display:flex;align-items:center;gap:.4rem"><div style="width:14px;height:14px;background:#FFD100;border:2px solid #FFD100"></div><span style="font-size:13px;color:var(--ink)">45–69 MEDIO — Hay trabajo por hacer, compañeros</span></div>
+        <div style="display:flex;align-items:center;gap:.4rem"><div style="width:14px;height:14px;background:#DC2626;border:2px solid #DC2626"></div><span style="font-size:13px;color:var(--ink)">70–100 ALTO — ¡Emergencia popular! ☠</span></div>
       </div>
     </div>
 
@@ -1880,8 +1914,59 @@ body.dark-mode body::before{color:rgba(227,6,19,.03)}
 <!-- MAPA -->
 <div class="wrap" id="v-mapa">
   <div class="sh"><span class="sh-t">★ Mapa Revolucionario del Conurbano</span><span class="sh-n">24 partidos — clickeá para abrir el expediente del compañero</span></div>
-  <div class="map-container" id="map-container" style="margin-bottom:1.5rem"></div>
-  <div class="map-legend" id="map-legend"></div>
+  <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem" id="map-vars">
+    <button class="pill on" onclick="setMapVar('vuln',this)">Vulnerabilidad</button>
+    <button class="pill" onclick="setMapVar('agua',this)">Agua de red %</button>
+    <button class="pill" onclick="setMapVar('cloaca',this)">Red cloacal %</button>
+    <button class="pill" onclick="setMapVar('pbgpc',this)">PBG por hab.</button>
+    <button class="pill" onclick="setMapVar('prespc',this)">Guita por cabeza</button>
+    <button class="pill" onclick="setMapVar('crec',this)">Crecimiento del pueblo</button>
+    <button class="pill" onclick="setMapVar('edad',this)">Edad mediana</button>
+    <button class="pill" onclick="setMapVar('resultado',this)">Resultado fiscal</button>
+  </div>
+  <div class="map-container" id="map-container" style="margin-bottom:1rem">
+    <svg viewBox="0 0 550 530" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto">
+      <rect x="0" y="0" width="550" height="530" fill="var(--bg)"/>
+      <path id="map-san_fernando" class="mapa-pol" d="M300,25 L380,15 L395,40 L380,80 L340,85 L300,70 Z" style="cursor:pointer" onmouseenter="mapHover(event,'san_fernando')" onmouseleave="hideTip()" onclick="mapClick('san_fernando')"/>
+      <path id="map-tigre" class="mapa-pol" d="M380,15 L470,10 L490,45 L480,100 L440,110 L395,95 L340,85 L380,80 Z" style="cursor:pointer" onmouseenter="mapHover(event,'tigre')" onmouseleave="hideTip()" onclick="mapClick('tigre')"/>
+      <path id="map-san_isidro" class="mapa-pol" d="M280,85 L340,85 L350,140 L310,155 L270,145 Z" style="cursor:pointer" onmouseenter="mapHover(event,'san_isidro')" onmouseleave="hideTip()" onclick="mapClick('san_isidro')"/>
+      <path id="map-vicente_lopez" class="mapa-pol" d="M270,145 L310,155 L315,200 L275,210 L240,195 Z" style="cursor:pointer" onmouseenter="mapHover(event,'vicente_lopez')" onmouseleave="hideTip()" onclick="mapClick('vicente_lopez')"/>
+      <path id="map-sanmartin" class="mapa-pol" d="M210,175 L275,175 L280,215 L250,240 L210,230 Z" style="cursor:pointer" onmouseenter="mapHover(event,'sanmartin')" onmouseleave="hideTip()" onclick="mapClick('sanmartin')"/>
+      <path id="map-tresdefebrero" class="mapa-pol" d="M170,220 L240,215 L250,260 L210,280 L170,270 Z" style="cursor:pointer" onmouseenter="mapHover(event,'tresdefebrero')" onmouseleave="hideTip()" onclick="mapClick('tresdefebrero')"/>
+      <path id="map-san_miguel" class="mapa-pol" d="M280,195 L340,190 L355,230 L330,255 L280,245 Z" style="cursor:pointer" onmouseenter="mapHover(event,'san_miguel')" onmouseleave="hideTip()" onclick="mapClick('san_miguel')"/>
+      <path id="map-malvinas_argentinas" class="mapa-pol" d="M340,170 L420,155 L440,200 L420,235 L380,240 L340,240 L355,230 Z" style="cursor:pointer" onmouseenter="mapHover(event,'malvinas_argentinas')" onmouseleave="hideTip()" onclick="mapClick('malvinas_argentinas')"/>
+      <path id="map-jose_c_paz" class="mapa-pol" d="M380,220 L440,215 L465,250 L450,280 L400,275 L380,255 Z" style="cursor:pointer" onmouseenter="mapHover(event,'jose_c_paz')" onmouseleave="hideTip()" onclick="mapClick('jose_c_paz')"/>
+      <path id="map-hurlingham" class="mapa-pol" d="M140,275 L210,270 L220,315 L170,320 L130,310 Z" style="cursor:pointer" onmouseenter="mapHover(event,'hurlingham')" onmouseleave="hideTip()" onclick="mapClick('hurlingham')"/>
+      <path id="map-ituzaingo" class="mapa-pol" d="M100,310 L170,315 L175,360 L125,370 L95,350 Z" style="cursor:pointer" onmouseenter="mapHover(event,'ituzaingo')" onmouseleave="hideTip()" onclick="mapClick('ituzaingo')"/>
+      <path id="map-merlo" class="mapa-pol" d="M55,355 L125,355 L130,400 L90,415 L50,400 Z" style="cursor:pointer" onmouseenter="mapHover(event,'merlo')" onmouseleave="hideTip()" onclick="mapClick('merlo')"/>
+      <path id="map-moreno" class="mapa-pol" d="M110,410 L180,405 L195,450 L160,470 L110,460 Z" style="cursor:pointer" onmouseenter="mapHover(event,'moreno')" onmouseleave="hideTip()" onclick="mapClick('moreno')"/>
+      <path id="map-la_matanza" class="mapa-pol" d="M170,340 L260,340 L270,390 L250,420 L180,415 Z" style="cursor:pointer" onmouseenter="mapHover(event,'la_matanza')" onmouseleave="hideTip()" onclick="mapClick('la_matanza')"/>
+      <path id="map-moron" class="mapa-pol" d="M130,310 L170,305 L175,345 L155,355 L130,345 Z" style="cursor:pointer" onmouseenter="mapHover(event,'moron')" onmouseleave="hideTip()" onclick="mapClick('moron')"/>
+      <path id="map-avellaneda" class="mapa-pol" d="M345,295 L415,290 L430,330 L400,350 L355,345 Z" style="cursor:pointer" onmouseenter="mapHover(event,'avellaneda')" onmouseleave="hideTip()" onclick="mapClick('avellaneda')"/>
+      <path id="map-lanus" class="mapa-pol" d="M315,340 L400,340 L405,380 L365,385 L320,380 Z" style="cursor:pointer" onmouseenter="mapHover(event,'lanus')" onmouseleave="hideTip()" onclick="mapClick('lanus')"/>
+      <path id="map-lomas_de_zamora" class="mapa-pol" d="M265,380 L380,380 L385,420 L340,430 L260,425 Z" style="cursor:pointer" onmouseenter="mapHover(event,'lomas_de_zamora')" onmouseleave="hideTip()" onclick="mapClick('lomas_de_zamora')"/>
+      <path id="map-quilmes" class="mapa-pol" d="M390,355 L460,350 L475,390 L450,410 L395,405 Z" style="cursor:pointer" onmouseenter="mapHover(event,'quilmes')" onmouseleave="hideTip()" onclick="mapClick('quilmes')"/>
+      <path id="map-almirante_brown" class="mapa-pol" d="M225,420 L330,420 L340,460 L295,475 L230,465 Z" style="cursor:pointer" onmouseenter="mapHover(event,'almirante_brown')" onmouseleave="hideTip()" onclick="mapClick('almirante_brown')"/>
+      <path id="map-florencio_varela" class="mapa-pol" d="M315,445 L385,440 L400,480 L370,500 L320,495 Z" style="cursor:pointer" onmouseenter="mapHover(event,'florencio_varela')" onmouseleave="hideTip()" onclick="mapClick('florencio_varela')"/>
+      <path id="map-berazategui" class="mapa-pol" d="M430,400 L500,390 L520,430 L490,460 L445,450 Z" style="cursor:pointer" onmouseenter="mapHover(event,'berazategui')" onmouseleave="hideTip()" onclick="mapClick('berazategui')"/>
+      <path id="map-esteban_echeverria" class="mapa-pol" d="M140,420 L225,420 L230,465 L180,475 L140,460 Z" style="cursor:pointer" onmouseenter="mapHover(event,'esteban_echeverria')" onmouseleave="hideTip()" onclick="mapClick('esteban_echeverria')"/>
+      <path id="map-ezeiza" class="mapa-pol" d="M80,430 L140,430 L145,475 L100,480 L70,465 Z" style="cursor:pointer" onmouseenter="mapHover(event,'ezeiza')" onmouseleave="hideTip()" onclick="mapClick('ezeiza')"/>
+      <text x="400" y="55" font-family="'Bebas Neue',sans-serif" font-size="13" fill="#E30613" letter-spacing="2" opacity=".7">NORTE</text>
+      <text x="100" y="310" font-family="'Bebas Neue',sans-serif" font-size="13" fill="#009B3A" letter-spacing="2" opacity=".7">OESTE</text>
+      <text x="380" y="510" font-family="'Bebas Neue',sans-serif" font-size="13" fill="#FFD100" letter-spacing="2" opacity=".7">SUR</text>
+    </svg>
+  </div>
+  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap">
+    <span id="legend-title" style="font-family:'Bebas Neue',sans-serif;font-size:16px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.06em">Vulnerabilidad</span>
+    <span id="legend-min" style="font-family:'Oswald',sans-serif;font-size:13px;color:var(--ink3)">0/100</span>
+    <div id="legend-bar" style="flex:1;min-width:120px;height:14px;background:linear-gradient(90deg,#065F46,#DC2626);border:2px solid var(--ink)"></div>
+    <span id="legend-max" style="font-family:'Oswald',sans-serif;font-size:13px;color:var(--ink3)">100/100</span>
+  </div>
+  <div style="display:flex;gap:1.5rem;flex-wrap:wrap;font-family:'Special Elite',monospace;font-size:12px;color:var(--ink3)">
+    <span><span style="display:inline-block;width:12px;height:12px;background:#065F46;margin-right:4px;vertical-align:middle;border:1px solid var(--ink)"></span> Bajo (0-44)</span>
+    <span><span style="display:inline-block;width:12px;height:12px;background:#FFD100;margin-right:4px;vertical-align:middle;border:1px solid var(--ink)"></span> Medio (45-69)</span>
+    <span><span style="display:inline-block;width:12px;height:12px;background:#DC2626;margin-right:4px;vertical-align:middle;border:1px solid var(--ink)"></span> Alto (70-100)</span>
+  </div>
 </div>
 
 <!-- COMBATIVIDAD -->
@@ -1959,6 +2044,112 @@ const ZONA = {norte:'Norte Gorila', sur:'Sur Profundo', oeste:'Oeste Combativo'}
 const CZONA = {norte:'#E30613', sur:'#FFD100', oeste:'#009B3A'};
 const PAL = ['#E30613','#FFD100','#6CACE4','#009B3A','#8B0000','#FF1744','#FFA000','#1976D2','#388E3C','#C62828','#FBC02D','#0288D1'];
 const GC = 'rgba(255,255,255,.06)', TC = '#5C5A55';
+
+function calcVuln(m) {
+  const c = m.censo_2022;
+  if (!c) return null;
+  const agua  = c.pct_agua_red  != null ? c.pct_agua_red  : null;
+  const cloa  = c.pct_cloaca_red != null ? c.pct_cloaca_red : null;
+  const pbgpc = m.pbg_corriente_2023 ? m.pbg_corriente_2023*1e6/m.poblacion : null;
+  const crec  = c.var_intercensal_pct != null ? c.var_intercensal_pct : null;
+  if (agua==null || cloa==null || pbgpc==null || crec==null) return null;
+  const vAgua = (100 - agua) / 100;
+  const vCloa = (100 - cloa) / 100;
+  const pbgMin = 2e6, pbgMax = 15e6;
+  const vPBG = Math.max(0, Math.min(1, (pbgMax - pbgpc) / (pbgMax - pbgMin)));
+  const vCrec = Math.max(0, Math.min(1, crec / 30));
+  return Math.round((vAgua * 0.30 + vCloa * 0.30 + vPBG * 0.25 + vCrec * 0.15) * 100);
+}
+
+function renderVuln(v) {
+  if (v == null) return '<span style="color:var(--ink3)">—</span>';
+  const color = v >= 70 ? '#DC2626' : v >= 45 ? '#FFD100' : '#065F46';
+  const label = v >= 70 ? 'ALTO' : v >= 45 ? 'MEDIO' : 'BAJO';
+  const bg = v >= 70 ? '#8B0000' : v >= 45 ? '#92400E' : '#065F46';
+  return `<div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px">
+    <div style="display:flex;align-items:center;gap:5px">
+      <div style="width:${Math.min(v,60)}px;height:5px;background:${color};border-radius:0;opacity:.8"></div>
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:13px;font-weight:700;color:${color}">${v}</span>
+    </div>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:9px;background:${bg};color:${color};padding:1px 6px;border:1px solid ${color};letter-spacing:.08em;text-transform:uppercase">${label}</span>
+  </div>`;
+}
+
+let mapVar = 'vuln';
+let mapSelId = null;
+
+const MAP_VARS = {
+  vuln:     {l:'Vulnerabilidad',     fn:m=>calcVuln(m),                                      inv:false, fmt:v=>v+'/100'},
+  agua:     {l:'Agua de red %',      fn:m=>m.censo_2022?.pct_agua_red??null,                  inv:true,  fmt:v=>v+'%'},
+  cloaca:   {l:'Red cloacal %',      fn:m=>m.censo_2022?.pct_cloaca_red??null,                inv:true,  fmt:v=>v+'%'},
+  pbgpc:    {l:'PBG por habitante',  fn:m=>m.pbg_corriente_2023?Math.round(m.pbg_corriente_2023*1e6/m.poblacion):null, inv:true, fmt:v=>'$'+Math.round(v/1000).toLocaleString('es-AR')+'K'},
+  prespc:   {l:'Presup. por hab.',   fn:m=>m.presupuesto_2025?Math.round(m.presupuesto_2025*1e6/m.poblacion):null, inv:true, fmt:v=>'$'+Math.round(v/1000).toLocaleString('es-AR')+'K'},
+  crec:     {l:'Crecimiento 2010-22', fn:m=>m.censo_2022?.var_intercensal_pct??null,           inv:false, fmt:v=>'+'+v+'%'},
+  edad:     {l:'Edad mediana',       fn:m=>m.censo_2022?.edad_mediana??null,                  inv:false, fmt:v=>v+' años'},
+  resultado:{l:'Resultado fiscal',  fn:m=>(m.recursos_percibidos_2025&&m.presupuesto_2025)?m.recursos_percibidos_2025-m.presupuesto_2025:null, inv:true, fmt:v=>(v>=0?'+':'')+Math.round(v)+'mm'},
+};
+
+function lerp(a,b,t){ return a + (b-a)*t; }
+function lerpColor(c1,c2,t){
+  const p=(s)=>parseInt(s,16);
+  const r=Math.round(lerp(p(c1.slice(1,3)),p(c2.slice(1,3)),t));
+  const g=Math.round(lerp(p(c1.slice(3,5)),p(c2.slice(3,5)),t));
+  const b=Math.round(lerp(p(c1.slice(5,7)),p(c2.slice(5,7)),t));
+  return '#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+
+function setMapVar(v,btn){
+  mapVar=v;
+  document.querySelectorAll('#map-vars .pill').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderMapa();
+}
+
+function renderMapa(){
+  if(!DATA.length) return;
+  const cfg = MAP_VARS[mapVar];
+  const vals = DATA.map(m=>cfg.fn(m)).filter(v=>v!=null);
+  if(!vals.length) return;
+  const min=Math.min(...vals), max=Math.max(...vals);
+  const range = max-min || 1;
+  const colorLow  = cfg.inv ? '#DC2626' : '#065F46';
+  const colorHigh = cfg.inv ? '#6CACE4' : '#DC2626';
+
+  DATA.forEach(m=>{
+    const el = document.getElementById('map-'+m.id);
+    if(!el) return;
+    const v = cfg.fn(m);
+    if(v==null){ el.style.fill='var(--ink)'; return; }
+    const t = (v-min)/range;
+    el.style.fill = lerpColor(colorLow, colorHigh, t);
+    el.style.stroke = '#1A1A1A';
+    el.style.strokeWidth = '1.5';
+  });
+
+  document.getElementById('legend-title').textContent = cfg.l;
+  document.getElementById('legend-bar').style.background = `linear-gradient(90deg,${colorLow},${colorHigh})`;
+  document.getElementById('legend-min').textContent = cfg.fmt(Math.round(min));
+  document.getElementById('legend-max').textContent = cfg.fmt(Math.round(max));
+}
+
+function mapHover(e,id){
+  const m = DATA.find(x=>x.id===id);
+  if(!m) return;
+  const cfg = MAP_VARS[mapVar];
+  const v = cfg.fn(m);
+  const txt = v!=null ? m.nombre+': '+cfg.fmt(typeof v==='number'?Math.round(v*10)/10:v) : m.nombre+': sin dato';
+  showTip(e, txt);
+}
+
+function mapClick(id){
+  const m = DATA.find(x=>x.id===id);
+  if(!m) return;
+  document.querySelectorAll('.mapa-pol').forEach(p=>p.classList.remove('selected'));
+  const el = document.getElementById('map-'+id);
+  if(el) el.classList.add('selected');
+  mapSelId = id;
+  openPanel(id);
+}
 
 fetch('datos.json').then(r=>r.json()).then(d=>{DATA=d.municipios;init();}).catch(e=>{console.error('Error cargando datos.json — verificá que el archivo esté en el repositorio:',e);DATA=[];init();});
 
@@ -2193,6 +2384,8 @@ const COLS = [
   {k:'rec',    l:'Recursos (mm$)',          sort:'recursos',   num:true},
   {k:'recpc',  l:'Recursos por Compañero',  sort:'rec_pc',     num:true},
   {k:'result', l:'¿Patria o Ajuste?',       sort:'resultado',  num:true},
+  {k:'saldo',  l:'Saldo de caja',           sort:'saldo',      num:true},
+  {k:'vuln',   l:'Vulnerabilidad',          sort:'vuln',       num:true},
 ];
 
 function buildThead(){
@@ -2202,10 +2395,12 @@ function buildThead(){
   }).join('');
 }
 
+let sortDir = 1;
 function sortBy(s,btn){
-  sort=s;
+  if(sort===s){ sortDir*=-1; }
+  else { sort=s; sortDir=1; }
   document.querySelectorAll('th.ts').forEach(th=>{th.classList.remove('on');const sa=th.querySelector('.sa');if(sa)sa.textContent='↕';});
-  btn.classList.add('on');const sa=btn.querySelector('.sa');if(sa)sa.textContent='▼';
+  btn.classList.add('on');const sa=btn.querySelector('.sa');if(sa)sa.textContent=sortDir===1?'▼':'▲';
   renderTable();
 }
 
@@ -2215,22 +2410,27 @@ function renderTable(){
   if(zona!=='todos') lista=lista.filter(m=>m.zona===zona);
   if(searchTerm) lista=lista.filter(m=>m.nombre.toLowerCase().includes(searchTerm));
   lista.sort((a,b)=>{
-    if(sort==='nombre')    return a.nombre.localeCompare(b.nombre,'es');
-    if(sort==='poblacion') return b.poblacion-a.poblacion;
-    if(sort==='densidad')  return (b.superficie_km2?b.poblacion/b.superficie_km2:0)-(a.superficie_km2?a.poblacion/a.superficie_km2:0);
-    if(sort==='pbg_corr')  return (b.pbg_corriente_2023||0)-(a.pbg_corriente_2023||0);
-    if(sort==='pbg_pc')    return (b.pbg_constante_2004_2023?b.pbg_constante_2004_2023/b.poblacion:0)-(a.pbg_constante_2004_2023?a.pbg_constante_2004_2023/a.poblacion:0);
-    if(sort==='presupuesto')return (b.presupuesto_2025||0)-(a.presupuesto_2025||0);
-    if(sort==='pres_pc')   return (b.presupuesto_2025?b.presupuesto_2025/b.poblacion:0)-(a.presupuesto_2025?a.presupuesto_2025/a.poblacion:0);
-    if(sort==='recursos')  return (b.recursos_percibidos_2025||0)-(a.recursos_percibidos_2025||0);
-    if(sort==='rec_pc')    return (b.recursos_percibidos_2025?b.recursos_percibidos_2025/b.poblacion:0)-(a.recursos_percibidos_2025?a.recursos_percibidos_2025/a.poblacion:0);
-    if(sort==='resultado') {
+    let r = 0;
+    if(sort==='nombre')    r = a.nombre.localeCompare(b.nombre,'es');
+    else if(sort==='poblacion') r = b.poblacion-a.poblacion;
+    else if(sort==='densidad')  r = (b.superficie_km2?b.poblacion/b.superficie_km2:0)-(a.superficie_km2?a.poblacion/a.superficie_km2:0);
+    else if(sort==='pbg_corr')  r = (b.pbg_corriente_2023||0)-(a.pbg_corriente_2023||0);
+    else if(sort==='pbg_pc')    r = (b.pbg_constante_2004_2023?b.pbg_constante_2004_2023/b.poblacion:0)-(a.pbg_constante_2004_2023?a.pbg_constante_2004_2023/a.poblacion:0);
+    else if(sort==='presupuesto')r = (b.presupuesto_2025||0)-(a.presupuesto_2025||0);
+    else if(sort==='pres_pc')   r = (b.presupuesto_2025?b.presupuesto_2025/b.poblacion:0)-(a.presupuesto_2025?a.presupuesto_2025/a.poblacion:0);
+    else if(sort==='recursos')  r = (b.recursos_percibidos_2025||0)-(a.recursos_percibidos_2025||0);
+    else if(sort==='rec_pc')    r = (b.recursos_percibidos_2025?b.recursos_percibidos_2025/b.poblacion:0)-(a.recursos_percibidos_2025?a.recursos_percibidos_2025/a.poblacion:0);
+    else if(sort==='resultado') {
       const ra=(a.recursos_percibidos_2025&&a.presupuesto_2025)?a.recursos_percibidos_2025-a.presupuesto_2025:null;
       const rb=(b.recursos_percibidos_2025&&b.presupuesto_2025)?b.recursos_percibidos_2025-b.presupuesto_2025:null;
-      return (rb||0)-(ra||0);
+      r = (rb||0)-(ra||0);
     }
-    if(sort==='tish')      return (b.tish?.alicuota_base_milesimos||0)-(a.tish?.alicuota_base_milesimos||0);
-    return 0;
+    else if(sort==='saldo')  r = (b.saldo_caja_2025||0)-(a.saldo_caja_2025||0);
+    else if(sort==='vuln')   r = (calcVuln(b)||0)-(calcVuln(a)||0);
+    else if(sort==='tish')      r = (b.tish?.alicuota_base_milesimos||0)-(a.tish?.alicuota_base_milesimos||0);
+    else r = 0;
+    if(sort==='nombre') return r;
+    return r * sortDir;
   });
   document.getElementById('tbody').innerHTML = lista.map(m=>{
     const prespc = ppc(m.presupuesto_2025,m.poblacion);
@@ -2255,6 +2455,8 @@ function renderTable(){
       <td style="text-align:right;font-size:12px;font-weight:600;padding:8px 10px;${resBg};border-radius:4px">
         ${resultado!=null?`<div>${resLabel}</div><div style="font-size:11px;font-weight:400">${fmtMM(Math.abs(resultado))}</div>`:'—'}
       </td>
+      <td class="${m.saldo_caja_2025!=null?'n':'na'}">${m.saldo_caja_2025!=null?fmtMM(m.saldo_caja_2025):'—'}</td>
+      <td style="text-align:right;font-size:12px;padding:6px 8px">${renderVuln(calcVuln(m))}</td>
     </tr>`;
   }).join('');
 }
@@ -2925,51 +3127,10 @@ const VEREDICTO_MAP_COLOR = v => {
 };
 
 function renderMap(){
-  const c = document.getElementById('map-container');
-  if(!c) return;
-  let svg = `<svg viewBox="0 0 550 530" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:auto">
-    <rect x="0" y="0" width="550" height="530" fill="var(--bg)"/>`;
-  DATA.forEach(m=>{
-    const mp = MAP_POLYS[m.id];
-    if(!mp) return;
-    const vColor = VEREDICTO_MAP_COLOR(m.veredicto_revolutionario||'');
-    const nombre = m.nombre;
-    const intendente = m.intendente||'';
-    const veredicto = m.veredicto_revolutionario||'';
-    svg += `<polygon class="muni-path" points="${mp.pts}" fill="${vColor}" 
-      onmouseenter="showMapTip(event,'${nombre}','${intendente}','${veredicto}')" 
-      onmouseleave="hideMapTip()" onclick="openPanelFromMap('${m.id}')"/>`;
-  });
-  // Zone labels
-  svg += `<text x="400" y="55" font-family="'Bebas Neue',sans-serif" font-size="13" fill="var(--c1)" letter-spacing="2" text-transform="uppercase" opacity=".7">NORTE</text>`;
-  svg += `<text x="100" y="310" font-family="'Bebas Neue',sans-serif" font-size="13" fill="var(--c4)" letter-spacing="2" opacity=".7">OESTE</text>`;
-  svg += `<text x="380" y="510" font-family="'Bebas Neue',sans-serif" font-size="13" fill="var(--c2)" letter-spacing="2" opacity=".7">SUR</text>`;
-  svg += `</svg>`;
-  c.innerHTML = svg;
-
-  // Legend
-  const legendItems = [
-    {label:'☠ Extrema urgencia',color:'#8B0000'},
-    {label:'⚡ Inmediato',color:'#DC2626'},
-    {label:'✊ Pendiente',color:'#92400E'},
-    {label:'📢 Aviso previo',color:'#B45309'},
-    {label:'⏳ Diferido',color:'#1E40AF'},
-    {label:'✌ Se salva',color:'#065F46'},
-  ];
-  document.getElementById('map-legend').innerHTML = legendItems.map(l=>`<div class="map-legend-item"><span style="background:${l.color}"></span>${l.label}</div>`).join('');
+  renderMapa();
 }
-function showMapTip(e,nombre,intendente,veredicto){
-  const t=document.getElementById('svg-tooltip');
-  if(!t) return;
-  t.innerHTML=`<div style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px">${nombre}</div><div style="font-family:'Oswald',sans-serif;font-size:12px;color:var(--c1l)">${intendente}</div><div style="font-family:'Special Elite',monospace;font-size:11px;color:var(--oro);margin-top:2px">${veredicto}</div>`;
-  t.style.opacity='1';
-  t.style.left=(e.clientX+14)+'px';
-  t.style.top=(e.clientY-28)+'px';
-}
-function hideMapTip(){const t=document.getElementById('svg-tooltip');if(t)t.style.opacity='0';}
 function openPanelFromMap(id){
-  setView('tabla',document.querySelectorAll('.nav-btn')[1]);
-  setTimeout(()=>openPanel(id),100);
+  openPanel(id);
 }
 
 // ── COMBATIVIDAD ────────────────────────────────────────
@@ -3485,6 +3646,170 @@ function renderHallOfFame(){
   el.innerHTML = html;
 }
 
+// ── PATCHED init ──────────────────────────────────────
+const _origInit = init;
+init = function(){
+  _origInit();
+  renderMap();
+  renderCombat();
+  renderTicker();
+  renderAutonomia();
+  renderScatter();
+  renderHallOfFame();
+  loadDarkMode();
+  setTimeout(renderMapa, 200);
+};
+
+// ── EXPORTAR PANEL ─────────────────────────────────────────
+function exportarPanel(id) {
+  const m = DATA.find(x=>x.id===id);
+  if (!m) return;
+  const c = m.censo_2022 || {};
+  const vuln = calcVuln(m);
+  const prespc = m.presupuesto_2025?Math.round(m.presupuesto_2025*1e6/m.poblacion):null;
+  const recpc  = m.recursos_percibidos_2025?Math.round(m.recursos_percibidos_2025*1e6/m.poblacion):null;
+  const pbgpc  = m.pbg_corriente_2023?Math.round(m.pbg_corriente_2023*1e6/m.poblacion):null;
+  const resultado = (m.recursos_percibidos_2025!=null&&m.presupuesto_2025!=null)?m.recursos_percibidos_2025-m.presupuesto_2025:null;
+  const resLabel = resultado!=null?(resultado>=0?'★ VICTORIA POPULAR':'☠ AJUSTE GORILA'):'Sin datos';
+  const resColor = resultado!=null?(resultado>=0?'#065F46':'#DC2626'):'#888';
+  const vulnColor = vuln!=null?(vuln>=70?'#DC2626':vuln>=45?'#FFD100':'#065F46'):'#888';
+  const vulnLabel = vuln!=null?(vuln>=70?'ALTA':vuln>=45?'MEDIA':'BAJA'):'—';
+
+  const html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+<title>★ Expediente — ${m.nombre} · Observatorio Popular del Conurbano</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#1A1A1A;color:#E8E4DC;padding:28px;font-size:13px}
+h1{font-size:26px;font-weight:900;color:#E30613;margin:0 0 4px}
+.zona{display:inline-block;background:#8B0000;color:#FFD100;padding:3px 10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;border:2px solid #FFD100}
+.sub{font-size:11px;color:#888;margin-bottom:24px}
+h2{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9E9B93;margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid #333}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:4px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:4px}
+.card{background:#222;border:2px solid #FFD100;padding:14px;border-left:8px solid #E30613}
+.card-l{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#9E9B93;margin-bottom:5px}
+.card-v{font-size:18px;font-weight:800;color:#E8E4DC;line-height:1.1}
+.card-s{font-size:10px;color:#666;margin-top:4px}
+.result-box{background:#222;border:3px solid ${resColor};padding:16px;text-align:center;margin-bottom:4px}
+.result-v{font-size:24px;font-weight:900;color:${resColor}}
+.vuln-box{background:#222;border:3px solid ${vulnColor};padding:14px;display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.vuln-score{font-size:36px;font-weight:900;color:${vulnColor};line-height:1}
+table{width:100%;border-collapse:collapse;font-size:11px}
+table td{padding:5px 4px;border-bottom:1px solid #333;color:#9E9B93}
+table td:first-child{color:#E8E4DC}
+footer{font-size:9px;color:#555;margin-top:28px;padding-top:12px;border-top:1px solid #333;line-height:1.7}
+@media print{body{background:#fff;color:#111;padding:20px}.card{background:#f5f5f5}.result-box,.vuln-box{background:#f5f5f5}table td{color:#444}table td:first-child{color:#111}footer{color:#888}}
+</style></head><body>
+<span class="zona">${ZONA[m.zona]||m.zona}</span>
+<h1>★ ${m.nombre}</h1>
+<div class="sub">Observatorio Popular del Conurbano · ${new Date().toLocaleDateString('es-AR')} · Expediente del Compañero</div>
+<h2>Datos fiscales 2025</h2>
+<div class="grid3">
+  <div class="card"><div class="card-l">⚒ Guita ejecutada</div><div class="card-v">${m.presupuesto_2025?fmtMM(m.presupuesto_2025):'—'}</div><div class="card-s">${prespc?fmtK(prespc)+' por hab.':''}</div></div>
+  <div class="card"><div class="card-l">Recursos al pueblo</div><div class="card-v">${m.recursos_percibidos_2025?fmtMM(m.recursos_percibidos_2025):'—'}</div><div class="card-s">${recpc?fmtK(recpc)+' por hab.':''}</div></div>
+  <div class="card"><div class="card-l">★ Caja del compañero</div><div class="card-v">${m.saldo_caja_2025!=null?fmtMM(m.saldo_caja_2025):'—'}</div><div class="card-s">Disponibilidades al 31/12</div></div>
+</div>
+<div class="result-box">
+  <div class="card-l">Resultado fiscal 2025 (recursos − gasto)</div>
+  <div class="result-v">${resultado!=null?resLabel+' · '+fmtMM(Math.abs(resultado)):'Sin datos suficientes'}</div>
+</div>
+<h2>Economía popular</h2>
+<div class="grid3">
+  <div class="card"><div class="card-l">★ Producción 2023</div><div class="card-v">${m.pbg_corriente_2023?fmtMM(m.pbg_corriente_2023):'—'}</div><div class="card-s">${pbgpc?fmtK(pbgpc)+' por hab.':''}</div></div>
+  <div class="card"><div class="card-l">Intendente</div><div class="card-v">${m.intendente||'—'}</div><div class="card-s">${m.intendente_partido||''}</div></div>
+  <div class="card"><div class="card-l">TISH alícuota base</div><div class="card-v">${m.tish?.alicuota_base_milesimos!=null?m.tish.alicuota_base_milesimos+'‰':'—'}</div><div class="card-s">${m.tish?.nombre_tasa||'TISH'}</div></div>
+</div>
+<h2>Datos demográficos — Censo 2022</h2>
+<div class="grid3">
+  <div class="card"><div class="card-l">Almas del pueblo</div><div class="card-v">${m.poblacion.toLocaleString('es-AR')}</div><div class="card-s">Censo 2022${c.pob_2010?' · 2010: '+c.pob_2010.toLocaleString('es-AR'):''}</div></div>
+  <div class="card"><div class="card-l">Crecimiento intercensal</div><div class="card-v">${c.var_intercensal_pct!=null?'+'+c.var_intercensal_pct+'%':'—'}</div><div class="card-s">2010–2022</div></div>
+  <div class="card"><div class="card-l">Hogares</div><div class="card-v">${c.total_hogares?c.total_hogares.toLocaleString('es-AR'):'—'}</div><div class="card-s">${c.total_hogares?'≈ '+(m.poblacion/c.total_hogares).toFixed(1)+' pers/hogar':''}</div></div>
+</div>
+<div class="grid3" style="margin-top:12px">
+  <div class="card"><div class="card-l">Agua de red pública</div><div class="card-v">${c.pct_agua_red!=null?c.pct_agua_red+'%':'—'}</div><div class="card-s">% de hogares</div></div>
+  <div class="card"><div class="card-l">Red cloacal</div><div class="card-v">${c.pct_cloaca_red!=null?c.pct_cloaca_red+'%':'—'}</div><div class="card-s">% de hogares</div></div>
+  <div class="card"><div class="card-l">Edad mediana</div><div class="card-v">${c.edad_mediana!=null?c.edad_mediana+' años':'—'}</div><div class="card-s">Índice masc.: ${c.indice_masculinidad||'—'}</div></div>
+</div>
+<h2>Índice de vulnerabilidad revolucionario</h2>
+<div class="vuln-box">
+  <div>
+    <div style="font-size:13px;font-weight:700;color:#E8E4DC;margin-bottom:4px">Vulnerabilidad de Infraestructura Municipal</div>
+    <div style="font-size:11px;color:#9E9B93;max-width:380px">Combina acceso al agua (30%), red cloacal (30%), PBG per cápita (25%) y crecimiento poblacional (15%). Elaboración propia del Observatorio Popular.</div>
+    <div style="display:inline-block;background:${vulnColor}33;color:${vulnColor};padding:3px 10px;border:2px solid ${vulnColor};font-family:'Bebas Neue',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:4px">${vulnLabel}</div>
+  </div>
+  <div style="text-align:right">
+    <div class="vuln-score">${vuln!=null?vuln:'—'}</div>
+    <div style="font-size:10px;color:#555">sobre 100</div>
+  </div>
+</div>
+<footer>
+<strong>★ Observatorio Popular del Conurbano</strong> · 2025–2026<br>
+Fuentes: Rendiciones de Cuentas Municipales 2025 · DPE-PBA (PBG 2023) · INDEC Censo Nacional 2022 · Ordenanzas impositivas municipales<br>
+Todos los valores monetarios expresados en millones de pesos. Índice de vulnerabilidad de elaboración propia, no es un indicador oficial.
+</footer></body></html>`;
+
+  const blob = new Blob([html], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const win = window.open(url,'_blank');
+  if(win) setTimeout(()=>win.print(), 900);
+}
+
+// ── IMPRIMIR COMPARACION ──────────────────────────────────
+function imprimirComparacion() {
+  const munis = compIds.map(id=>DATA.find(x=>x.id===id)).filter(Boolean);
+  if (!munis.length) return;
+  const COLS_COMP = [
+    {l:'Almas del pueblo', fn:m=>m.poblacion.toLocaleString('es-AR')},
+    {l:'★ Producción 2023', fn:m=>m.pbg_corriente_2023?fmtMM(m.pbg_corriente_2023):'—'},
+    {l:'Producción por cabeza', fn:m=>m.pbg_corriente_2023?fmtK(Math.round(m.pbg_corriente_2023*1e6/m.poblacion)):'—'},
+    {l:'⚒ Guita ejecutada 2025', fn:m=>m.presupuesto_2025?fmtMM(m.presupuesto_2025):'—'},
+    {l:'Guita por compañero', fn:m=>m.presupuesto_2025?fmtK(Math.round(m.presupuesto_2025*1e6/m.poblacion)):'—'},
+    {l:'Recursos al pueblo', fn:m=>m.recursos_percibidos_2025?fmtMM(m.recursos_percibidos_2025):'—'},
+    {l:'Recursos por hab.', fn:m=>m.recursos_percibidos_2025?fmtK(Math.round(m.recursos_percibidos_2025*1e6/m.poblacion)):'—'},
+    {l:'Saldo de caja', fn:m=>m.saldo_caja_2025!=null?fmtMM(m.saldo_caja_2025):'—'},
+    {l:'¿Patria o Ajuste?', fn:m=>{const r=(m.recursos_percibidos_2025&&m.presupuesto_2025)?m.recursos_percibidos_2025-m.presupuesto_2025:null;return r!=null?(r>=0?'★ VICTORIA POPULAR '+fmtMM(r):'☠ AJUSTE GORILA '+fmtMM(Math.abs(r))):'—';}},
+    {l:'Agua de red %', fn:m=>m.censo_2022?.pct_agua_red!=null?m.censo_2022.pct_agua_red+'%':'—'},
+    {l:'Red cloacal %', fn:m=>m.censo_2022?.pct_cloaca_red!=null?m.censo_2022.pct_cloaca_red+'%':'—'},
+    {l:'Vulnerabilidad', fn:m=>{const v=calcVuln(m);return v!=null?v+'/100 ('+(v>=70?'ALTA':v>=45?'MEDIA':'BAJA')+')':'—';}},
+    {l:'TISH alícuota', fn:m=>m.tish?.alicuota_base_milesimos!=null?m.tish.alicuota_base_milesimos+'‰':'—'},
+  ];
+  const colores = ['#E30613','#6CACE4','#FFD100'];
+  const headers = munis.map((m,i)=>`<th style="background:${colores[i]}22;color:${colores[i]};border-bottom:3px solid ${colores[i]};padding:10px;text-align:center;font-size:13px">${m.nombre}</th>`).join('');
+  const rows = COLS_COMP.map(col=>{
+    const vals = munis.map(m=>col.fn(m));
+    return `<tr><td style="font-weight:600;color:#111;padding:7px 10px;background:#f8f8f8;font-size:11px">${col.l}</td>${vals.map((v,i)=>`<td style="padding:7px 10px;text-align:center;font-size:12px;border-left:1px solid #eee">${v}</td>`).join('')}</tr>`;
+  }).join('');
+
+  const html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8">
+<title>★ Mano a Mano · Observatorio Popular del Conurbano</title>
+<style>
+body{font-family:'Segoe UI',Arial,sans-serif;background:#1A1A1A;color:#E8E4DC;padding:28px;font-size:13px}
+h1{font-size:20px;font-weight:900;color:#E30613;margin:0 0 4px}
+.sub{font-size:10px;color:#888;margin-bottom:20px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{padding:10px;text-align:center}
+td{padding:7px 10px}
+tr:nth-child(even) td:first-child{background:#222}
+tr:hover td{background:#333}
+footer{font-size:9px;color:#555;margin-top:24px;padding-top:10px;border-top:1px solid #333}
+@media print{body{padding:12px}h1{font-size:16px}}
+</style></head><body>
+<h1>★ Mano a Mano de Compañeros</h1>
+<div class="sub">Observatorio Popular del Conurbano · ${new Date().toLocaleDateString('es-AR')} · Toda la guita en millones de mangos</div>
+<table>
+  <thead><tr><th style="text-align:left;padding:10px;background:#222;font-size:11px;color:#888">Indicador</th>${headers}</tr></thead>
+  <tbody>${rows}</tbody>
+</table>
+<footer>★ Fuentes: Rendiciones de Cuentas 2025 · DPE-PBA (PBG 2023) · INDEC Censo 2022 · Ordenanzas impositivas<br>
+Índice de vulnerabilidad de elaboración propia del Observatorio Popular.</footer>
+</body></html>`;
+
+  const blob = new Blob([html], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const win = window.open(url,'_blank');
+  if(win) setTimeout(()=>win.print(), 900);
+}
+
 // ── ADD WATERMARK + SEAL TO PANEL SOVIET CARD ──────────
 const _origOpenPanel = openPanel;
 openPanel = function(id){
@@ -3498,24 +3823,11 @@ openPanel = function(id){
   }
 };
 
-// ── PATCHED init ──────────────────────────────────────
-const _origInit = init;
-init = function(){
-  _origInit();
-  renderMap();
-  renderCombat();
-  renderTicker();
-  renderAutonomia();
-  renderScatter();
-  renderHallOfFame();
-  loadDarkMode();
-};
-
 // Re-run new renders when switching views
 const _origSetView = setView;
 setView = function(v,btn){
   _origSetView(v,btn);
-  if(v==='mapa') { setTimeout(renderMap,50); }
+  if(v==='mapa') { setTimeout(()=>{renderMap();renderMapa();},50); }
   if(v==='demo') { setTimeout(()=>{renderAutonomia();renderScatter();},50); }
   if(v==='combat') { setTimeout(renderCombat,50); }
   if(v==='hall') { setTimeout(renderHallOfFame,50); }
