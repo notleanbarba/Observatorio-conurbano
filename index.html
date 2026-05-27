@@ -772,8 +772,8 @@ footer{
   .cgrid.g2{grid-template-columns:1fr}
   .p2{grid-template-columns:1fr}
   .sbn{width:110px}
-  .nav-inner{padding:0 1rem 0 0;overflow-x:auto;flex-wrap:nowrap}
-  .dark-toggle{margin-left:1rem;margin-right:1rem}
+  .nav-inner{display:grid;grid-template-columns:repeat(2,1fr);padding:0;width:100%;overflow-x:visible}
+  .dark-toggle{order:unset;width:100%;height:100%;margin:0;border:none;border-radius:0;padding:0.8rem 0.5rem;display:flex;align-items:center;justify-content:center;color:#fff}
   .soviet-body{grid-template-columns:1fr}
   .soviet-photo{flex-direction:row;gap:1rem;padding:.75rem 1rem;border-right:none;border-bottom:3px solid var(--oro)}
   .soviet-avatar{width:70px;height:85px;font-size:40px}
@@ -784,7 +784,9 @@ footer{
   .veredicto-row-label{text-align:left!important;padding-bottom:0}
   .pk{transform:rotate(0)!important}
   .hdr-chip{min-width:120px}
-  .nav-btn{padding:.7rem 1rem;font-size:15px;white-space:nowrap}
+  .nav-btn{padding:0.8rem 0.5rem;font-size:13px;white-space:normal;text-align:center;border-right:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15)}
+  .nav-btn:nth-child(2n){border-right:none}
+  .nav-btn:nth-child(7){border-bottom:none}
   .cc-t{font-size:13px}
   .fbar{padding:.5rem .75rem;gap:.4rem}
   .pill{padding:4px 10px;font-size:12px}
@@ -1156,7 +1158,7 @@ body.dark-mode body::before{color:rgba(227,6,19,.03)}
 .stamp-seal-inner{font-family:'Black Ops One',sans-serif;font-size:7px;color:var(--oro);text-transform:uppercase;text-align:center;letter-spacing:.05em;line-height:1.3}
 
 /* DARK MODE TOGGLE */
-.dark-toggle{background:none;border:3px solid var(--oro);color:var(--oro);width:36px;height:36px;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;transition:all .15s;flex-shrink:0;margin-left:2.5rem;margin-right:1.5rem}
+.dark-toggle{order:-1;background:none;border:3px solid var(--oro);color:var(--oro);width:36px;height:36px;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer;transition:all .15s;flex-shrink:0;margin-left:2.5rem;margin-right:1.5rem;align-self:center}
 .dark-toggle:hover{background:var(--oro);color:var(--c1)}
 
 /* RESPONSIVE MAP */
@@ -1235,7 +1237,6 @@ body.dark-mode body::before{color:rgba(227,6,19,.03)}
 <div class="ticker-wrap"><div class="ticker-content" id="ticker-content"></div></div>
 <nav class="nav">
   <div style="max-width:1340px;margin:0 auto;position:relative;width:100%;display:flex;align-items:center;">
-    <button class="dark-toggle" onclick="toggleDarkMode()" id="dark-toggle" title="Modo oscuro"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     <div class="nav-inner">
       <button class="nav-btn on" onclick="setView('dashboard',this)">Panel de la Patria</button>
       <button class="nav-btn" onclick="setView('tabla',this)">Ranking de Compañeros</button>
@@ -1244,6 +1245,7 @@ body.dark-mode body::before{color:rgba(227,6,19,.03)}
       <button class="nav-btn" onclick="setView('demo',this)">Condiciones del Pueblo</button>
       <button class="nav-btn" onclick="setView('tish',this)">Guita a la Oligarquía</button>
       <button class="nav-btn" onclick="setView('glosario',this)">¿Qué Significa?</button>
+      <button class="dark-toggle" onclick="toggleDarkMode()" id="dark-toggle" title="Modo oscuro"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </div>
   </div>
 </nav>
