@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260">
+  <defs>
+    <radialGradient id="bg1" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#333"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <linearGradient id="s1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD100" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#E30613" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="260" fill="url(#bg1)"/>
+  <g transform="translate(40,20)" fill="#ddd" stroke="none">
+    <ellipse cx="60" cy="55" rx="38" ry="45" fill="#bbb"/>
+    <ellipse cx="60" cy="42" rx="32" ry="22" fill="#555"/>
+    <rect x="22" y="42" width="76" height="8" rx="4" fill="#555"/>
+    <ellipse cx="60" cy="75" rx="28" ry="14" fill="#aaa"/>
+    <rect x="35" y="85" width="50" height="80" rx="8" fill="#ccc"/>
+    <rect x="25" y="90" width="20" height="65" rx="6" fill="#bbb"/>
+    <rect x="75" y="90" width="20" height="65" rx="6" fill="#bbb"/>
+    <path d="M40 88 Q60 100 80 88 L78 110 Q60 105 42 110 Z" fill="#E30613" opacity="0.8"/>
+    <circle cx="50" cy="52" r="4" fill="#333"/>
+    <circle cx="70" cy="52" r="4" fill="#333"/>
+    <path d="M48 65 Q60 72 72 65" stroke="#333" stroke-width="2" fill="none"/>
+    <rect x="42" y="38" width="36" height="6" rx="3" fill="#444"/>
+  </g>
+  <rect x="0" y="200" width="200" height="60" fill="url(#s1)"/>
+  <line x1="0" y1="200" x2="200" y2="200" stroke="#E30613" stroke-width="4"/>
+  <text x="100" y="235" text-anchor="middle" font-family="'Anton','Impact',sans-serif" font-size="14" fill="#FFD100" letter-spacing="3" font-weight="400">NESTOR KIRCHNER</text>
+  <text x="100" y="252" text-anchor="middle" font-family="'Special Elite',monospace" font-size="9" fill="#E30613" letter-spacing="2">1950 · 2010</text>
+</svg>

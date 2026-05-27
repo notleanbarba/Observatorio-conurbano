@@ -1079,6 +1079,395 @@ footer{
 
 
 
+/* HALL OF FAME — SALÓN DE LA FAMA REVOLUCIONARIO */
+.hall-cat-section{margin-bottom:2.5rem}
+.hall-cat-header{
+  background:var(--ink);
+  border:5px solid var(--c1);
+  border-left:18px solid var(--c1);
+  box-shadow:8px 8px 0 var(--oro);
+  padding:1.25rem 1.5rem;
+  margin-bottom:1.5rem;
+  position:relative;
+  overflow:hidden;
+  transform:rotate(-.2deg);
+}
+.hall-cat-header::before{
+  content:'';
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent 0 3px,rgba(255,209,0,.06) 3px 6px,transparent 6px 24px);
+  pointer-events:none;
+}
+.hall-cat-header::after{
+  content:'';
+  position:absolute;top:0;right:0;bottom:0;width:120px;
+  background:linear-gradient(270deg,rgba(227,6,19,.15),transparent);
+  pointer-events:none;
+}
+.hall-cat-icon{
+  font-size:3rem;
+  line-height:1;
+  position:relative;z-index:2;
+  filter:drop-shadow(3px 3px 0 var(--ink));
+}
+.hall-cat-title{
+  font-family:'Anton','Impact',sans-serif;
+  font-size:1.9rem;
+  color:var(--oro);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  line-height:1;
+  text-shadow:3px 3px 0 var(--c1);
+  -webkit-text-stroke:.5px var(--ink);
+  position:relative;z-index:2;
+}
+.hall-cat-desc{
+  font-family:'Special Elite',monospace;
+  font-size:13px;
+  color:rgba(255,209,0,.75);
+  margin-top:4px;
+  position:relative;z-index:2;
+  line-height:1.5;
+}
+.hall-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(420px,1fr));
+  gap:1.75rem;
+}
+
+.hall-hero{
+  position:relative;
+  background:var(--ink);
+  border:4px solid var(--oro);
+  box-shadow:6px 6px 0 var(--c1), inset 0 0 0 1px var(--c1d);
+  overflow:hidden;
+  transition:transform .15s,box-shadow .15s;
+}
+.hall-hero:hover{
+  transform:rotate(0) translateY(-4px) scale(1.01);
+  box-shadow:10px 10px 0 var(--c1), inset 0 0 0 1px var(--c1d);
+  z-index:5;
+}
+.hall-hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(135deg,transparent 0 20px,rgba(227,6,19,.03) 20px 22px,transparent 22px 40px),
+    repeating-linear-gradient(45deg,transparent 0 20px,rgba(255,209,0,.02) 20px 22px,transparent 22px 40px);
+  pointer-events:none;z-index:0;
+}
+.hall-watermark{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-35deg);
+  font-family:'Anton','Impact',sans-serif;
+  font-size:4rem;
+  color:rgba(255,209,0,.04);
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  pointer-events:none;
+  z-index:0;
+  -webkit-text-stroke:1px rgba(255,209,0,.03);
+}
+
+.hall-portrait{
+  background:linear-gradient(180deg, #1A1A1A 0%, #0D0D0D 100%);
+  border-bottom:4px solid var(--oro);
+  padding:1.5rem 1.5rem 1rem;
+  position:relative;z-index:2;
+  display:flex;
+  gap:1.25rem;
+  align-items:flex-start;
+}
+.hall-portrait::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 30%, rgba(255,209,0,.08) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+.hall-portrait-frame{
+  position:relative;
+  flex-shrink:0;
+  width:110px;
+  height:135px;
+  border:4px solid var(--oro);
+  box-shadow:4px 4px 0 var(--c1), inset 0 0 0 2px #111;
+  overflow:hidden;
+  background:#0D0D0D;
+}
+.hall-portrait-frame::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 30%, rgba(255,209,0,.12) 0%, transparent 65%);
+  pointer-events:none;
+  z-index:3;
+}
+.hall-portrait-frame::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 50%, rgba(139,0,0,.25) 100%);
+  pointer-events:none;
+  z-index:3;
+}
+.hall-portrait-img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:grayscale(1) contrast(1.3) brightness(.85);
+  display:block;
+  position:relative;
+  z-index:1;
+}
+.hall-portrait-img-fallback{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Anton','Impact',sans-serif;
+  font-size:42px;
+  color:var(--oro);
+  text-shadow:3px 3px 0 var(--c1);
+  position:relative;
+  z-index:1;
+  -webkit-text-stroke:1px var(--ink);
+}
+.hall-portrait-stamp{
+  position:absolute;
+  top:6px;left:6px;
+  z-index:5;
+  background:var(--c1);
+  color:var(--oro);
+  font-family:'Black Ops One','Anton',sans-serif;
+  font-size:8px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:2px 6px;
+  border:1.5px solid var(--oro);
+  transform:rotate(-3deg);
+  box-shadow:2px 2px 0 rgba(0,0,0,.6);
+}
+.hall-portrait-rank{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  z-index:5;
+  background:linear-gradient(180deg, transparent, rgba(227,6,19,.85) 40%, var(--c1) 100%);
+  color:var(--oro);
+  font-family:'Anton','Impact',sans-serif;
+  font-size:13px;
+  text-align:center;
+  padding:8px 4px 4px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-shadow:1px 1px 0 rgba(0,0,0,.9);
+  border-top:2px solid var(--oro);
+}
+.hall-portrait-seal{
+  position:absolute;
+  bottom:8px;right:8px;
+  width:42px;height:42px;
+  border:2px double var(--oro);
+  border-radius:50%;
+  z-index:5;
+  opacity:.5;
+  transform:rotate(-15deg);
+  pointer-events:none;
+}
+.hall-portrait-seal svg{
+  width:100%;height:100%;
+}
+
+.hall-portrait-info{
+  flex:1;
+  position:relative;
+  z-index:2;
+  min-width:0;
+}
+.hall-cat{
+  display:inline-block;
+  font-family:'Black Ops One','Bebas Neue',sans-serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:3px 10px;
+  border:2px solid;
+  margin-bottom:.4rem;
+  box-shadow:2px 2px 0 rgba(0,0,0,.5);
+}
+.hall-cat.kirchnerista{background:#E30613;color:#FFD100;border-color:#FFD100}
+.hall-cat.montonero{background:#1A1A1A;color:#FFD100;border-color:#FFD100}
+.hall-cat.peronista{background:#FFD100;color:#1A1A1A;border-color:#1A1A1A}
+.hall-title{
+  font-family:'Anton','Impact',sans-serif;
+  font-size:1.6rem;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  line-height:1;
+  text-shadow:3px 3px 0 var(--c1);
+  -webkit-text-stroke:.5px var(--ink);
+}
+.hall-subtitle{
+  font-family:'Special Elite',monospace;
+  font-size:12px;
+  color:rgba(255,209,0,.85);
+  letter-spacing:.04em;
+  margin-top:3px;
+  text-transform:uppercase;
+}
+.hall-portrait-meta{
+  display:flex;gap:6px;flex-wrap:wrap;margin-top:.5rem;
+}
+
+.hall-body{
+  padding:1.25rem 1.25rem 1rem;
+  position:relative;z-index:2;
+  background:var(--card);
+}
+.hall-quote{
+  font-family:'Special Elite',monospace;
+  font-size:14px;
+  color:var(--ink);
+  line-height:1.6;
+  border-left:6px solid var(--c1);
+  padding:.75rem 1rem;
+  background:rgba(227,6,19,.04);
+  margin-bottom:1rem;
+  font-style:italic;
+  position:relative;
+}
+.hall-quote::before{content:'« ';color:var(--c1);font-weight:700;font-style:normal;font-size:18px}
+.hall-quote::after{content:' »';color:var(--c1);font-weight:700;font-style:normal;font-size:18px}
+
+.hall-metrics{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.6rem;
+  margin-bottom:1rem;
+}
+.hall-metric{
+  background:#fff;
+  border:3px solid var(--ink);
+  border-left:8px solid var(--c1);
+  padding:.55rem .7rem;
+  transform:rotate(-.3deg);
+  position:relative;
+}
+.hall-metric::after{
+  content:'★';
+  position:absolute;
+  top:4px;right:6px;
+  color:var(--c1);
+  font-size:10px;
+  opacity:.4;
+}
+.hall-metric:nth-child(2n){transform:rotate(.4deg);border-left-color:var(--oro)}
+.hall-metric:nth-child(2n)::after{color:var(--oro)}
+.hall-metric:nth-child(3n){transform:rotate(-.5deg);border-left-color:var(--c4)}
+.hall-metric:nth-child(3n)::after{color:var(--c4)}
+.hall-metric-label{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:10px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--c1d);
+  margin-bottom:1px;
+}
+.hall-metric-value{
+  font-family:'Anton','Impact',sans-serif;
+  font-size:1.2rem;
+  color:var(--ink);
+  line-height:1;
+}
+.hall-metric-sub{
+  font-family:'Special Elite',monospace;
+  font-size:9px;
+  color:var(--ink3);
+  margin-top:1px;
+}
+
+.hall-badges{
+  display:flex;flex-wrap:wrap;gap:5px;
+  margin-top:.75rem;
+  padding-top:.75rem;
+  border-top:2px dashed rgba(26,26,26,.2);
+}
+.hall-badge{
+  font-family:'Black Ops One','Bebas Neue',sans-serif;
+  font-size:10px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:3px 10px;
+  border:2px solid var(--ink);
+  box-shadow:2px 2px 0 var(--ink);
+}
+.hall-badge.b1{background:#E30613;color:#FFD100}
+.hall-badge.b2{background:#1A1A1A;color:#FFD100;border-color:#FFD100}
+.hall-badge.b3{background:#FFD100;color:#1A1A1A}
+.hall-badge.b4{background:#009B3A;color:#FFD100;border-color:#1A1A1A}
+.hall-badge.b5{background:#6CACE4;color:#1A1A1A;border-color:#1A1A1A}
+.hall-badge.b6{background:var(--c1d);color:#fff;border-color:#FFD100}
+
+.hall-footer{
+  background:linear-gradient(90deg, #0D0D0D, #1A1A1A, #0D0D0D);
+  border-top:3px solid var(--oro);
+  padding:.5rem 1.25rem;
+  display:flex;justify-content:space-between;align-items:center;
+  position:relative;z-index:2;
+}
+.hall-footer span{
+  font-family:'Special Elite',monospace;
+  font-size:10px;
+  color:var(--oro);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  opacity:.8;
+}
+.hall-footer::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:1px;
+  background:repeating-linear-gradient(90deg, var(--oro) 0 6px, transparent 6px 12px, var(--c1) 12px 18px, transparent 18px 24px);
+}
+
+.hall-seal{
+  position:absolute;
+  bottom:100px;right:10px;
+  width:70px;height:70px;
+  border:3px double var(--oro);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  transform:rotate(-15deg);
+  opacity:.35;
+  z-index:1;
+  pointer-events:none;
+  background:rgba(26,26,26,.5);
+}
+.hall-seal-inner{
+  font-family:'Black Ops One',sans-serif;
+  font-size:7px;
+  color:var(--oro);
+  text-transform:uppercase;
+  text-align:center;
+  letter-spacing:.04em;
+  line-height:1.4;
+}
+
+@media(max-width:768px){
+  .hall-grid{grid-template-columns:1fr}
+  .hall-metrics{grid-template-columns:1fr 1fr}
+  .hall-portrait{flex-direction:column;align-items:center;text-align:center}
+  .hall-portrait-frame{width:90px;height:110px}
+  .hall-portrait-info{align-items:center;display:flex;flex-direction:column}
+  .hall-portrait-meta{justify-content:center}
+  .hall-cat-title{font-size:1.5rem}
+}
+@media(max-width:480px){
+  .hall-metrics{grid-template-columns:1fr}
+  .hall-portrait-frame{width:75px;height:95px}
+  .hall-title{font-size:1.3rem}
+}
+
 /* DARK MODE */
 body.dark-mode{--bg:#0D0D0D;--bg2:#1A1A1A;--card:#1A1A1A;--ink:#E0E0E0;--ink2:#B0B0B0;--ink3:#888;--borde:#E0E0E0;--sh:4px 4px 0 #555;--sh2:8px 8px 0 var(--c1)}
 body.dark-mode header{background:linear-gradient(180deg,#1A0000 0%,#0D0D0D 100%)}
@@ -1240,6 +1629,7 @@ body.dark-mode body::before{color:rgba(227,6,19,.03)}
       <button class="nav-btn" onclick="setView('demo',this)">Condiciones del Pueblo</button>
       <button class="nav-btn" onclick="setView('tish',this)">Guita a la Oligarquía</button>
       <button class="nav-btn" onclick="setView('glosario',this)">¿Qué Significa?</button>
+      <button class="nav-btn" onclick="setView('hall',this)">Salón de la Fama</button>
       <button class="dark-toggle" onclick="toggleDarkMode()" id="dark-toggle" title="Modo oscuro"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </div>
   </div>
@@ -1533,6 +1923,14 @@ body.dark-mode body::before{color:rgba(227,6,19,.03)}
       <button id="modal-comparar-btn" onclick="ejecutarComparacion()" style="background:var(--c1);color:var(--oro);border:3px solid var(--ink);border-radius:0;padding:8px 22px;font-family:'Bebas Neue',sans-serif;font-size:14px;font-weight:700;cursor:pointer;opacity:.4;letter-spacing:.06em;text-transform:uppercase;box-shadow:4px 4px 0 var(--ink)" disabled>★ Enfrentar Compañeros →</button>
     </div>
   </div>
+</div>
+
+<!-- HALL OF FAME -->
+<div class="wrap" id="v-hall">
+  <div style="background:var(--c1);color:var(--oro);padding:1rem 1.5rem;margin-bottom:1.5rem;border:4px solid var(--ink);box-shadow:6px 6px 0 var(--oro);transform:rotate(-.3deg);font-family:'Anton',sans-serif;font-size:1.4rem;letter-spacing:.04em;text-transform:uppercase;text-align:center">
+    ★ SALÓN DE LA FAMA REVOLUCIONARIO ★ LOS QUE DIERON LA VIDA POR LA PATRIA Y EL PUEBLO ★
+  </div>
+  <div id="hall-content"></div>
 </div>
 
 <footer>
@@ -2790,6 +3188,303 @@ renderComparador = function(){
   grid.innerHTML = munis.map(m=>buildSovietCardHTML(m)).join('');
 };
 
+// ── HALL OF FAME ──────────────────────────────────────
+const HALL_DATA = [
+  {
+    id: 'nestor_kirchner',
+    categoria: 'kirchnerista',
+    nombre: 'Néstor Carlos Kirchner',
+    alias: 'El Presidente Que Devolvió La Dignidad',
+    icono: '✊',
+    frase: 'Yo no vine a hacer gestiones, vine a cambiar las cosas de raíz. Los derechos humanos no se negocian, se hacen cumplir.',
+    metricas: [
+      {label:'Crecimiento del PBI',valor:'+54%',sub:'2003-2007, recuperación histórica'},
+      {label:'Reducción del desempleo',valor:'-11 puntos',sub:'del 21% al 10% en su gestión'},
+      {label:'Genocidas procesados',valor:'440',sub:'justicia para las víctimas del terror'},
+      {label:'Deuda al FMI cancelada',valor:'100%',sub:'soberanía económica recuperada'},
+    ],
+    badges: ['PATRIA MODELO','RESTITUIDOR DE DDHH','SOBERANÍA ECONÓMICA','ANTI-FMI','PATRIA PRESENTE'],
+    expediente: 'NK-2003/2007',
+    sello: 'KIRCHNER\nVIVE\nEN EL PUEBLO',
+  },
+  {
+    id: 'cristina_kirchner',
+    categoria: 'kirchnerista',
+    nombre: 'Cristina Elisabet Fernández de Kirchner',
+    alias: 'La Presidenta Que Continuó La Obra',
+    icono: '♛',
+    frase: 'El pueblo no se equivoca. Yo soy consecuencia de un pueblo que decidió ser libre y soberano.',
+    metricas: [
+      {label:'Paritarias firmadas',valor:'15 consecutivas',sub:'salarios que recuperaron el poder adquisitivo'},
+      {label:'Asignaciones Universal',valor:'6.500.000',sub:'AHU, PROGRESAR, PROCREAR'},
+      {label:'Leyes de igualdad',valor:'Matrimonio Igualitario + Identidad de Género',sub:'pionera en derechos civiles'},
+      {label:'Reelección popular',valor:'54%',sub:'mayoría absoluta en 2011'},
+    ],
+    badges: ['CFK ETERNA','SOBERANÍA POPULAR','DDHH INTEGRAL','IGUALDAD REAL','PATRIA NO SE VENDE'],
+    expediente: 'CFK-2007/2024',
+    sello: 'CFK\nPATRIA\nSOBERANA',
+  },
+  {
+    id: 'maximo_kirchner',
+    categoria: 'kirchnerista',
+    nombre: 'Máximo Carlos Kirchner',
+    alias: 'El Heredero De La Lucha Popular',
+    icono: '★',
+    frase: 'La militancia no es una cuestión de época, es una decisión de vida. El pueblo organizado jamás será vencido.',
+    metricas: [
+      {label:'Militancia en territorio',valor:'La Cámpora Nacional',sub:'estructura popular en todo el país'},
+      {label:'Distritos con presencia',valor:'24 provincias',sub:'organización federal del pueblo'},
+      {label:'Legislador electo',valor:'Diputado Nacional',sub:'representación popular en el Congreso'},
+      {label:'Continuidad del modelo',valor:'En construcción',sub:'la Patria se hace caminando'},
+    ],
+    badges: ['LA CÁMPORA','MOVIMIENTO NACIONAL','MILITANCIA JOVEN','PATRIA PRESENTE','ORGANIZACIÓN POPULAR'],
+    expediente: 'MK-2017/2024',
+    sello: 'LA CÁMPORA\nAVANZA\nCON EL PUEBLO',
+  },
+  {
+    id: 'axel_kicillof',
+    categoria: 'kirchnerista',
+    nombre: 'Axel Kicillof',
+    alias: 'El Gobernador Que Defiende Al Pueblo Bonaerense',
+    icono: '📊',
+    frase: 'La provincia de Buenos Aires no se rinde. Frente al ajuste salvaje, respondemos con más educación, más salud y más obras para el pueblo.',
+    metricas: [
+      {label:'Inversión educativa',valor:'Historica',sub:'plan de escuelas más grande de la historia provincial'},
+      {label:'Política sanitaria',valor:'5 hospitales',sub:'nuevos centros de salud para el conurbano'},
+      {label:'Empleo protegido',valor:'+120.000 puestos',sub:'en la provincia más castigada por el ajuste'},
+      {label:'Reconducción de la deuda',valor:'Negociación soberana',sub:'sin FMI, con el pueblo'},
+    ],
+    badges: ['GOBERNADOR DEL PUEBLO','DEFENSOR DEL CONURBANO','EDUCACIÓN PRIORIDAD','SALUD POPULAR','PATRIA PROVINCIAL'],
+    expediente: 'AK-2019/2025',
+    sello: 'KICILLOF\nPATRIA\nY PUEBLO',
+  },
+  {
+    id: 'anibal_fernandez',
+    categoria: 'kirchnerista',
+    nombre: 'Aníbal Fernández',
+    alias: 'El Vocero Del Pueblo Frente A Los Medios Gorilas',
+    icono: '🗣',
+    frase: 'Los compañeros que cayeron por la Patria no pueden ser olvidados. Yo voy a estar siempre del lado de la verdad y de la justicia.',
+    metricas: [
+      {label:'Gestión en seguridad',valor:'Plan Buenos Aires',sub:'derechos humanos y seguridad ciudadana'},
+      {label:'Defensa del gobierno popular',valor:'Inquebrantable',sub:'frente a los intentos destituyentes'},
+      {label:'Jefe de Gabinete',valor:'2009-2011',sub:'coordinación del Estado presente'},
+      {label:'Fidelidad al proyecto',valor:'Permanente',sub:'desde los orígenes del kirchnerismo'},
+    ],
+    badges: ['VOCERO POPULAR','LEALTAD INQUEBRANTABLE','DDHH COMPROMISO','ESTADO PRESENTE','PATRIA EN MOVIMIENTO'],
+    expediente: 'AF-2003/2024',
+    sello: 'ANÍBAL\nPATRIA\nVERDAD',
+  },
+  {
+    id: 'mario_firmenich',
+    categoria: 'montonero',
+    nombre: 'Mario Eduardo Firmenich',
+    alias: 'El Comandante Que Dio Todo Por La Patria Socialista',
+    icono: '⚔',
+    frase: 'El pueblo argentino tiene derecho a rebelarse contra la dictadura y la opresión. La historia nos juzgará como lo que somos: luchadores por la justicia.',
+    metricas: [
+      {label:'Organización popular',valor:'Montoneros',sub:'la mayor organización político-militar del pueblo'},
+      {label:'Combate a la dictadura',valor:'Activo',sub:'resistencia armada contra el genocidio'},
+      {label:'Exilio por la causa',valor:'7 países',sub:'la persecución no quebró la lucha'},
+      {label:'Reconocimiento histórico',valor:'En proceso',sub:'la memoria popular no olvida'},
+    ],
+    badges: ['COMANDANTE POPULAR','RESISTENCIA ARMADA','MEMORIA VERDAD JUSTICIA','LUCHA ANTIDICTATORIAL','PATRIA SOCIALISTA'],
+    expediente: 'MF-1970/2024',
+    sello: 'MONTONEROS\nPATRIA O\nMUERTE',
+  },
+  {
+    id: 'juan_abal_medina',
+    categoria: 'montonero',
+    nombre: 'Juan Manuel Abal Medina',
+    alias: 'El Organizador De La Resistencia Peronista',
+    icono: '✈',
+    frase: 'Sin organización no hay revolución. El peronismo es el pueblo organizado, y el pueblo organizado es invencible.',
+    metricas: [
+      {label:'Organización territorial',valor:'Fundacional',sub:'estructura de base peronista'},
+      {label:'Secretario general del PJ',valor:'1970-1972',sub:'reconstrucción del movimiento popular'},
+      {label:'Lucha contra la dictadura',valor:'Permanente',sub:'resistencia desde la estructura'},
+      {label:'Tercera posición',valor:'Peronista',sub:'ni yanquis ni soviéticos, Patria justa'},
+    ],
+    badges: ['ORGANIZADOR MAYOR','PERONISMO DE BASE','TERCERA POSICIÓN','RESISTENCIA POPULAR','ESTRUCTURA NACIONAL'],
+    expediente: 'JAM-1970/2024',
+    sello: 'PERONISMO\nORGANIZADO\nVENCE',
+  },
+  {
+    id: 'firmenich_diputado',
+    categoria: 'montonero',
+    nombre: 'Mario Firmenich — Legislador Popular',
+    alias: 'El Compañero Que Volvió Por La Vía Democrática',
+    icono: '⚖',
+    frase: 'La lucha del pueblo tiene múltiples formas. Yo elegí la democracia para seguir defendiendo los mismos derechos por los que siempre luchamos.',
+    metricas: [
+      {label:'Representación popular',valor:'Diputado Nacional',sub:'la revolución también se legisla'},
+      {label:'Coherencia ideológica',valor:'Intachable',sub:'los mismos principios, otra etapa de lucha'},
+      {label:'Votos populares',valor:'300.000',sub:'el pueblo elige a sus luchadores'},
+      {label:'Memoria histórica',valor:'Activa',sub:'sin memoria no hay futuro'},
+    ],
+    badges: ['LEGISLADOR POPULAR','DEMOCRACIA PARTICIPATIVA','MEMORIA ACTIVA','COHERENCIA HISTÓRICA','PATRIA LEGISLATIVA'],
+    expediente: 'MF-DIP/2024',
+    sello: 'MONTONEROS\nDEMOCRACIA\nPOPULAR',
+  },
+  {
+    id: 'juan_domingo_peron',
+    categoria: 'peronista',
+    nombre: 'Juan Domingo Perón',
+    alias: 'El General, El Conductor Del Pueblo Trabajador',
+    icono: '★',
+    frase: 'La comunidad organizada es la base de toda felicidad humana. De la casa de gobierno se cuida, se atiende, se ayuda y se protege a los descamisados.',
+    metricas: [
+      {label:'Trabajadores organizados',valor:'17.000.000',sub:'la CGT, columna vertebral de la Patria'},
+      {label:'Derechos sociales conquistados',valor:'12 leyes',sub:'aguinaldo, vacaciones, convenios, jubilación'},
+      {label:'Tercera posición',valor:'Doctrina peronista',sub:'ni capitalismo ni comunismo, justicia social'},
+      {label:'Evita, su compañera',valor:'La Abanderada',sub:'sin ella la obra no es posible'},
+    ],
+    badges: ['CONDUCTOR SUPREMO','PRIMER TRABAJADOR','JUSTICIA SOCIAL','INDEPENDENCIA ECONÓMICA','SOBERANÍA POLÍTICA'],
+    expediente: 'JDP-1945/1974',
+    sello: 'PERÓN\nVIVE EN\nEL CORAZÓN',
+  },
+  {
+    id: 'eva_peron',
+    categoria: 'peronista',
+    nombre: 'María Eva Duarte de Perón',
+    alias: 'La Abanderada De Los Humildes, Santa Evita',
+    icono: '✝',
+    frase: 'Yo elegí ser Eva, la compañera del pueblo. Mi vida entera la dediqué a los descamisados, porque así me lo pedía el corazón.',
+    metricas: [
+      {label:'Viviendas populares',valor:'1.000+',sub:'hogares dignos para los trabajadores'},
+      {label:'Suplicas atendidas',valor:'300.000',sub:'cada carta, una vida que se salvó'},
+      {label:'Voto femenino garantizado',valor:'Ley 13.010',sub:'las mujeres argentinas votan gracias a Evita'},
+      {label:'Santidad popular',valor:'Causa abierta',sub:'el pueblo la canonizó antes que el Vaticano'},
+    ],
+    badges: ['SANTA POPULAR','ABANDERADA DE LOS HUMILDES','EVITA ETERNA','VOTO FEMENINO','REPARTIDORA SOCIAL'],
+    expediente: 'MEP-1945/1952',
+    sello: 'EVITA\nSANTA DE\nLOS HUMILDES',
+  },
+  {
+    id: 'hugo_moyano',
+    categoria: 'peronista',
+    nombre: 'Hugo Moyano',
+    alias: 'El Líder Gremial Que Defiende Al Trabajador',
+    icono: '⚒',
+    frase: 'El trabajador tiene derecho a una vida digna. Si hay que caminar, caminamos. Si hay que cortar, cortamos. La CGT no se doblega.',
+    metricas: [
+      {label:'Paritarias victoriosas',valor:'45 consecutivas',sub:'ningún ajuste pudo con los trabajadores'},
+      {label:'Afiliasiados representados',valor:'3.200.000',sub:'la CGT es la voz del pueblo trabajador'},
+      {label:'Resistencia al ajuste',valor:'Permanente',sub:'marchas, cortes y movilizaciones'},
+      {label:'Obras sociales sindicales',valor:'En todo el país',sub:'salud, turismo y ayuda social para los trabajadores'},
+    ],
+    badges: ['LÍDER GREMIAL','CGT PERONISTA','PARITARIAS GANADAS','DEFENSA LABORAL','MOVIMIENTO OBRERO'],
+    expediente: 'HM-1987/2024',
+    sello: 'CGT\nMOVIMIENTO\nOBRERO',
+  },
+  {
+    id: 'jose_rucci',
+    categoria: 'peronista',
+    nombre: 'José Ignacio Rucci',
+    alias: 'El Soldado De Perón En La CGT',
+    icono: '☭',
+    frase: 'La CGT es de Perón y del pueblo. Los trabajadores organizados somos la fuerza imparable de la Patria.',
+    metricas: [
+      {label:'Lealtad al General',valor:'Absoluta',sub:'hasta las últimas consecuencias'},
+      {label:'Sindicatos organizados',valor:'62 gremios',sub:'la CGT unida es la fuerza del pueblo'},
+      {label:'Movilizaciones populares',valor:'Históricas',sub:'el pueblo en las calles, siempre'},
+      {label:'Entrega por la causa',valor:'Mártir',sub:'su vida por el movimiento peronista'},
+    ],
+    badges: ['LEALTAD ABSOLUTA','CGT PERONISTA','SOLDADO DEL PUEBLO','MÁRTIR DEL MOVIMIENTO','HASTA LA MUERTE'],
+    expediente: 'JR-1957/1973',
+    sello: 'RUCCI\nMÁRTIR\nPERONISTA',
+  },
+];
+
+const HALL_CATS = [
+  {
+    key: 'kirchnerista',
+    label: '★ Salón Kirchnerista — La Patria No Se Negocia',
+    desc: 'Los compañeros que restituyeron la dignidad del pueblo argentino. Los que pusieron los derechos humanos en el centro de la vida nacional, devolvieron la justicia a las víctimas del terrorismo de Estado y construyeron un país soberano, independiente y con justicia social. Modelo nacional y popular para las generaciones que vienen.',
+    color: '#E30613',
+    icon: '✊',
+  },
+  {
+    key: 'montonero',
+    label: '⚔ Salón Montonero — La Organización Popular Que Cambió La Historia',
+    desc: 'Los compañeros que tomaron las armas para defender al pueblo cuando nadie lo hacía, que dieron la vida por una Patria justa, libre y soberana. De la resistencia armada a la construcción del poder popular, su legado permanece indeleble en la memoria colectiva de los trabajadores.',
+    color: '#1A1A1A',
+    icon: '⚔',
+  },
+  {
+    key: 'peronista',
+    label: '★ Salón Peronista — Los Fundadores Del Movimiento Nacional',
+    desc: 'Los compañeros que forjaron el movimiento más grande de la clase trabajadora latinoamericana. Los que convirtieron la doctrina social en política de Estado, los derechos laborales en conquistas irrevocables, y la marchita en el canto de un pueblo que nunca más se dejó pisotear.',
+    color: '#FFD100',
+    icon: '★',
+  },
+];
+
+function renderHallOfFame(){
+  const el = document.getElementById('hall-content');
+  if(!el) return;
+  const LAUREL_SVG = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="50" rx="44" ry="44" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="6 3"/><path d="M50 6 C45 18 35 22 25 18 C30 28 28 38 20 42 C28 44 38 40 42 50" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M50 6 C55 18 65 22 75 18 C70 28 72 38 80 42 C72 44 62 40 58 50" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M50 94 C45 82 35 78 25 82 C30 72 28 62 20 58 C28 56 38 60 42 50" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M50 94 C55 82 65 78 75 82 C70 72 72 62 80 58 C72 56 62 60 58 50" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="50" cy="50" r="22" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="50" y="55" text-anchor="middle" font-family="'Black Ops One',sans-serif" font-size="8" fill="currentColor" letter-spacing="1">HALL</text></svg>`;
+  let html = '';
+  HALL_CATS.forEach(cat => {
+    const items = HALL_DATA.filter(h => h.categoria === cat.key);
+    if(!items.length) return;
+    html += `<div class="hall-cat-section">
+      <div class="hall-cat-header">
+        <div style="display:flex;align-items:center;gap:.75rem;position:relative;z-index:2">
+          <span class="hall-cat-icon">${cat.icon}</span>
+          <div>
+            <div class="hall-cat-title">${cat.label}</div>
+            <div class="hall-cat-desc">${cat.desc}</div>
+          </div>
+        </div>
+      </div>
+      <div class="hall-grid">`;
+    items.forEach((item, idx) => {
+      const catClass = item.categoria;
+      const rankLabels = {kirchnerista:['PRESIDENTE DE LA PATRIA',' SECRETARIO GENERAL','CUADRO NACIONAL'],montonero:['COMANDANTE','OFICIAL PRIMERO','GUERRILLERO HISTÓRICO'],peronista:['CONDUCTOR','SECRETARIO GENERAL','DIRECTIVO NACIONAL']};
+      const rankLabel = (rankLabels[item.categoria]||rankLabels.peronista)[idx]||'COMPANERO';
+      const initials = item.nombre.split(' ').map(w=>w[0]).join('').substring(0,3).toUpperCase();
+      const imgId = item.id || item.nombre.toLowerCase().replace(/[^a-z]/g,'_');
+      html += `<div class="hall-hero" style="${idx%2?'transform:rotate(.15deg)':'transform:rotate(-.15deg)'}">
+        <div class="hall-watermark">${item.categoria.toUpperCase()}</div>
+        <div class="hall-portrait">
+          <div class="hall-portrait-frame">
+            <img class="hall-portrait-img" src="hall/${imgId}.jpg" alt="${item.nombre}" onerror="this.onerror=null;this.src='hall/${imgId}.svg';if(this.naturalWidth===0){this.style.display='none';this.nextElementSibling.style.display='flex';}">
+            <div class="hall-portrait-img-fallback" style="display:none">${initials}</div>
+            <div class="hall-portrait-stamp">${item.categoria === 'kirchnerista' ? 'K' : item.categoria === 'montonero' ? 'M' : 'P'}</div>
+            <div class="hall-portrait-rank">${rankLabel} #${idx+1}</div>
+          </div>
+          <div class="hall-portrait-info">
+            <span class="hall-cat ${catClass}">${catClass.toUpperCase()}</span>
+            <div class="hall-title">${item.nombre}</div>
+            <div class="hall-subtitle">${item.alias}</div>
+            <div class="hall-portrait-meta">
+              ${item.badges.slice(0,2).map((b,i) => `<span class="hall-badge b${(i%6)+1}">${b}</span>`).join('')}
+            </div>
+          </div>
+          <div class="hall-portrait-seal" style="color:var(--oro)">${LAUREL_SVG}</div>
+        </div>
+        <div class="hall-body">
+          <div class="hall-quote">${item.frase}</div>
+          <div class="hall-metrics">${item.metricas.map(m => `<div class="hall-metric">
+            <div class="hall-metric-label">${m.label}</div>
+            <div class="hall-metric-value">${m.valor}</div>
+            <div class="hall-metric-sub">${m.sub}</div>
+          </div>`).join('')}</div>
+          <div class="hall-badges">${item.badges.map((b,i) => `<span class="hall-badge b${(i%6)+1}">${b}</span>`).join('')}</div>
+        </div>
+        <div class="hall-footer">
+          <span>EXPEDIENTE ${item.expediente} · ARCHIVO DEL MOVIMIENTO</span>
+          <span>★ OBSERVATORIO POPULAR ★</span>
+        </div>
+        <div class="hall-seal"><div class="hall-seal-inner">${item.sello}</div></div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+  el.innerHTML = html;
+}
+
 // ── ADD WATERMARK + SEAL TO PANEL SOVIET CARD ──────────
 const _origOpenPanel = openPanel;
 openPanel = function(id){
@@ -2812,6 +3507,7 @@ init = function(){
   renderTicker();
   renderAutonomia();
   renderScatter();
+  renderHallOfFame();
   loadDarkMode();
 };
 
@@ -2822,6 +3518,7 @@ setView = function(v,btn){
   if(v==='mapa') { setTimeout(renderMap,50); }
   if(v==='demo') { setTimeout(()=>{renderAutonomia();renderScatter();},50); }
   if(v==='combat') { setTimeout(renderCombat,50); }
+  if(v==='hall') { setTimeout(renderHallOfFame,50); }
 };
 
 // Redraw scatter and map on resize
