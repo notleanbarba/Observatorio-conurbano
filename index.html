@@ -747,16 +747,57 @@ footer{
   opacity:.6;
 }
 
-@media(max-width:768px){.kpi-row{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
   .hdr-inner{grid-template-columns:1fr;padding:1.5rem 1rem}
   .hdr-chips{display:none}
   .wrap{padding:1rem}
   .cgrid.g2{grid-template-columns:1fr}
-  .kpi-row{grid-template-columns:repeat(2,1fr)}
   .p2{grid-template-columns:1fr}
   .sbn{width:110px}
-  .nav-inner{padding:0 1rem}
+  .nav-inner{padding:0 1rem;overflow-x:auto;flex-wrap:nowrap}
+  .soviet-body{grid-template-columns:1fr}
+  .soviet-photo{flex-direction:row;gap:1rem;padding:.75rem 1rem;border-right:none;border-bottom:3px solid var(--oro)}
+  .soviet-avatar{width:70px;height:85px;font-size:40px}
+  .soviet-fields{grid-template-columns:1fr}
+  .soviet-name{font-size:1.25rem}
+  .soviet-veredicto{font-size:12px;padding:.5rem .6rem}
+  .veredicto-row{grid-template-columns:1fr!important}
+  .veredicto-row-label{text-align:left!important;padding-bottom:0}
+  .pk{transform:rotate(0)!important}
+  .hdr-chip{min-width:120px}
+  .nav-btn{padding:.7rem 1rem;font-size:15px;white-space:nowrap}
+  .cc-t{font-size:13px}
+  .fbar{padding:.5rem .75rem;gap:.4rem}
+  .pill{padding:4px 10px;font-size:12px}
+  .comp-row-label{width:110px;font-size:11px}
+  .p-close{padding:4px 8px;font-size:12px}
+}
+@media(max-width:480px){
+  .kpi-row{grid-template-columns:1fr!important}
+  h1{font-size:1.8rem!important;-webkit-text-stroke:.5px var(--ink)!important;text-shadow:3px 3px 0 var(--ink),5px 5px 0 var(--oro)!important}
+  .hdr-pill{font-size:10px;padding:4px 8px}
+  .hdr-desc{font-size:11px;padding:4px 8px}
+  .sh{padding:.4rem .6rem}
+  .sh-t{font-size:16px}
+  .cc{padding:.75rem}
+  .panel .pb{padding:.75rem}
+  .pk-v{font-size:1.2rem}
+  body::before{font-size:50px}
+  header::after{font-size:80px;top:10px}
+  .ph-t{font-size:1.2rem}
+  .search-wrap{min-width:100%}
+  .comp-bar{flex-direction:column;align-items:stretch;gap:.4rem}
+  .comp-hint{display:none}
+  table{font-size:12px}
+  thead th{font-size:10px;padding:6px 6px}
+  td{padding:5px 6px;font-size:12px}
+  .search-input{font-size:12px}
+  .soviet-avatar{width:55px;height:70px;font-size:30px}
+  .soviet-name{font-size:1.1rem}
+  .soviet-role{font-size:11px}
+  .soviet-field-value{font-size:12px}
+  .soviet-footer span{font-size:8px}
 }
 
 /* FICHA SOVIÉTICA DEL INTENDENTE */
@@ -927,12 +968,6 @@ footer{
   color:var(--oro);
   letter-spacing:.05em;
   text-transform:uppercase;
-}
-@media(max-width:768px){
-  .soviet-body{grid-template-columns:1fr}
-  .soviet-photo{flex-direction:row;gap:1rem;padding:.75rem 1rem;border-right:none;border-bottom:3px solid var(--oro)}
-  .soviet-avatar{width:70px;height:85px;font-size:40px}
-  .soviet-fields{grid-template-columns:1fr}
 }
 
 /* BUSCADOR */
