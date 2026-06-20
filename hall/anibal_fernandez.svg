@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260">
+  <defs>
+    <radialGradient id="bg5" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#333"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <linearGradient id="s5" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD100" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#E30613" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="260" fill="url(#bg5)"/>
+  <g transform="translate(40,18)" fill="#ddd" stroke="none">
+    <ellipse cx="60" cy="60" rx="38" ry="46" fill="#c5c5c5"/>
+    <path d="M18 38 Q22 8 60 5 Q98 8 102 38" fill="#333"/>
+    <rect x="22" y="44" width="76" height="8" rx="4" fill="#333"/>
+    <ellipse cx="60" cy="38" rx="30" ry="14" fill="#444"/>
+    <circle cx="46" cy="54" r="5" fill="#111"/>
+    <circle cx="74" cy="54" r="5" fill="#111"/>
+    <path d="M42 70 Q60 66 78 70" stroke="#666" stroke-width="2.5" fill="none"/>
+    <rect x="30" y="42" width="60" height="14" rx="7" fill="#333"/>
+    <rect x="36" y="94" width="48" height="70" rx="6" fill="#bbb"/>
+    <path d="M36 100 L18 104 L20 130 L36 124 Z" fill="#bbb"/>
+    <path d="M84 100 L102 104 L100 130 L84 124 Z" fill="#bbb"/>
+    <path d="M42 94 Q60 102 78 94 L76 108 Q60 102 44 108 Z" fill="#E30613" opacity="0.85"/>
+  </g>
+  <rect x="0" y="200" width="200" height="60" fill="url(#s5)"/>
+  <line x1="0" y1="200" x2="200" y2="200" stroke="#E30613" stroke-width="4"/>
+  <text x="100" y="235" text-anchor="middle" font-family="'Anton','Impact',sans-serif" font-size="12" fill="#FFD100" letter-spacing="2" font-weight="400">ANIBAL FERNANDEZ</text>
+  <text x="100" y="252" text-anchor="middle" font-family="'Special Elite',monospace" font-size="9" fill="#E30613" letter-spacing="2">1957 · NEGADOR SUPREMO</text>
+</svg>

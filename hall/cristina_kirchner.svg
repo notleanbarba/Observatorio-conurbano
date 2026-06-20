@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#333"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <linearGradient id="s2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD100" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#E30613" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="260" fill="url(#bg2)"/>
+  <g transform="translate(40,20)" fill="#ddd" stroke="none">
+    <ellipse cx="60" cy="58" rx="35" ry="42" fill="#c8c8c8"/>
+    <path d="M25 35 Q30 10 60 8 Q90 10 95 35 L95 48 Q90 55 80 55 L40 55 Q30 55 25 48 Z" fill="#444"/>
+    <ellipse cx="60" cy="55" rx="36" ry="40" fill="#c0c0c0"/>
+    <path d="M25 35 Q30 10 60 8 Q90 10 95 35" fill="#444"/>
+    <rect x="30" y="42" width="60" height="8" rx="4" fill="#555"/>
+    <circle cx="50" cy="50" r="3.5" fill="#222"/>
+    <circle cx="70" cy="50" r="3.5" fill="#222"/>
+    <path d="M50 66 Q60 60 70 66" stroke="#444" stroke-width="1.5" fill="none"/>
+    <rect x="38" y="88" width="44" height="70" rx="6" fill="#bbb"/>
+    <path d="M38 95 L20 100 L22 125 L38 118 Z" fill="#bbb"/>
+    <path d="M82 95 L100 100 L98 125 L82 118 Z" fill="#bbb"/>
+    <path d="M42 88 Q60 98 78 88 L76 104 Q60 100 44 104 Z" fill="#E30613" opacity="0.85"/>
+  </g>
+  <rect x="0" y="200" width="200" height="60" fill="url(#s2)"/>
+  <line x1="0" y1="200" x2="200" y2="200" stroke="#E30613" stroke-width="4"/>
+  <text x="100" y="235" text-anchor="middle" font-family="'Anton','Impact',sans-serif" font-size="12" fill="#FFD100" letter-spacing="2" font-weight="400">CRISTINA FERNANDEZ</text>
+  <text x="100" y="252" text-anchor="middle" font-family="'Special Elite',monospace" font-size="9" fill="#E30613" letter-spacing="2">1953 · ETERNA</text>
+</svg>
